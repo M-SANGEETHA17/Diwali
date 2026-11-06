@@ -7,6 +7,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) lucide.createIcons();
 
+  // =========================================================================
+  // 🔗 LIVE RENDER PRODUCTION URL
+  // =========================================================================
+  const CUSTOM_RENDER_URL = 'https://diwali-al26.onrender.com';
+
+
   // Multi-stop Gold Foil Gradient definitions for SVG
   const GOLD_DEFS = `
     <defs>
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-navy-lotus',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -64,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-clay-diya',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-crimson-kalash',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '॥ श्री लक्ष्मी प्रसन्न ॥',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Free greeting',
       bgClass: 'tpl-emerald-ganesh',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '॥ शुभ दीपावली ॥',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -106,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-akash-kandil',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -120,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Corporate & Family',
       bgClass: 'tpl-midnight-gold',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '',
       dateTime: 'WARMEST FESTIVE WISHES',
       venue: 'THANK YOU FOR YOUR VALUED PATRONAGE',
@@ -134,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-tree-of-life',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '॥ श्री गणेशाय नमः ॥',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -148,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Invite + RSVP',
       bgClass: 'tpl-marigold-toran',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '॥ श्री लक्ष्मी प्रसन्न ॥',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -162,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Signature Edition',
       bgClass: 'tpl-royal-purple',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -176,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Festive Crackers & Light',
       bgClass: 'tpl-golden-rangoli',
       heading: 'Happy Diwali',
-      tagline: 'THE DESHPANDE FAMILY WISHES YOU',
+      tagline: 'OUR FAMILY WISHES YOU',
       mantra: '॥ शुभ दीपावली ॥',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
@@ -254,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentStep: 1,
     selectedTemplate: TEMPLATES[0],
     headingTitle: TEMPLATES[0].heading,
-    senderName: localStorage.getItem('studio_sender') || 'The Deshpande family',
+    senderName: localStorage.getItem('studio_sender') || 'Our family',
     subtitle: 'Wishing you and your family abundant peace, prosperity and happiness!',
     format: 'status',
     language: 'en',
@@ -535,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formPhotoPreview) formPhotoPreview.src = state.familyPhoto;
 
     // Host Line
-    const rawHost = state.senderName ? state.senderName.trim() : (state.language === 'ta' ? 'தேஷ்பாண்டே குடும்பத்தினர்' : state.language === 'hi' ? 'देशपांडे परिवार' : 'The Deshpande family');
+    const rawHost = state.senderName ? state.senderName.trim() : (state.language === 'ta' ? 'எங்கள் குடும்பத்தினர்' : state.language === 'hi' ? 'हमारे परिवार' : 'Our family');
     if (cardHostLine) {
       if (state.language === 'ta') {
         cardHostLine.className = 'font-tamil text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
@@ -975,8 +981,10 @@ document.addEventListener('DOMContentLoaded', () => {
       cardUrl = generatedShareLink?.value;
     }
 
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+    const baseOrigin = (isLocal && CUSTOM_RENDER_URL && CUSTOM_RENDER_URL.trim()) ? CUSTOM_RENDER_URL.trim().replace(/\/$/, '') : window.location.origin;
     if (!cardUrl || cardUrl === 'Generating private link...' || !cardUrl.startsWith('http')) {
-      cardUrl = state.shareUrl ? `${window.location.origin}${state.shareUrl}` : window.location.href;
+      cardUrl = state.shareUrl ? `${baseOrigin}${state.shareUrl}` : window.location.href;
     }
 
     const activeHeading = state.headingTitle || state.selectedTemplate.heading || 'Happy Diwali';
@@ -1044,7 +1052,22 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       let cardId = 'dw_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).substring(4);
-      let shareUrl = `/view.html?id=${cardId}&tpl=${encodeURIComponent(tpl)}`;
+      
+      // Build self-contained parameters so card ALWAYS works on ANY server/device without data loss!
+      const shareParams = new URLSearchParams();
+      shareParams.set('id', cardId);
+      shareParams.set('tpl', tpl);
+      if (sender) shareParams.set('name', sender.trim());
+      if (heading) shareParams.set('h', heading.trim());
+      if (msg) shareParams.set('msg', msg.trim());
+      if (state.subtitle && state.subtitle.trim()) shareParams.set('sub', state.subtitle.trim());
+      if (state.language && state.language !== 'en') shareParams.set('lang', state.language);
+      if (state.fontStyle && state.fontStyle !== 'elegant') shareParams.set('font', state.fontStyle);
+      if (state.symbol && state.symbol !== 'none') shareParams.set('sym', state.symbol);
+      if (state.familyPhoto && !state.familyPhoto.startsWith('data:')) {
+        shareParams.set('p', state.familyPhoto);
+      }
+      let shareUrl = `/view.html?${shareParams.toString()}`;
 
       try {
         const res = await fetch('/api/cards', {
@@ -1057,7 +1080,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const data = await res.json();
           if (data && data.card && data.card.id) {
             cardId = data.card.id;
-            shareUrl = `/view.html?id=${cardId}&tpl=${encodeURIComponent(tpl)}`;
+            shareParams.set('id', cardId);
+            shareUrl = `/view.html?${shareParams.toString()}`;
           }
         }
       } catch (networkErr) {
@@ -1073,11 +1097,15 @@ document.addEventListener('DOMContentLoaded', () => {
       state.cardId = cardId;
       state.shareUrl = shareUrl;
 
-      const fullUrl = `${window.location.origin}${shareUrl}`;
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      const baseOrigin = (isLocal && CUSTOM_RENDER_URL && CUSTOM_RENDER_URL.trim()) ? CUSTOM_RENDER_URL.trim().replace(/\/$/, '') : window.location.origin;
+      const fullUrl = `${baseOrigin}${shareUrl}`;
       if (generatedShareLink) generatedShareLink.value = fullUrl;
     } catch (err) {
       console.error('Server save error:', err);
-      const fallbackUrl = `${window.location.origin}/view.html?tpl=${encodeURIComponent(state.selectedTemplate.id)}`;
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      const baseOrigin = (isLocal && CUSTOM_RENDER_URL && CUSTOM_RENDER_URL.trim()) ? CUSTOM_RENDER_URL.trim().replace(/\/$/, '') : window.location.origin;
+      const fallbackUrl = `${baseOrigin}/view.html?tpl=${encodeURIComponent(state.selectedTemplate.id)}`;
       if (generatedShareLink) generatedShareLink.value = fallbackUrl;
     }
   }

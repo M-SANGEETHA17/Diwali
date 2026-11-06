@@ -14,7 +14,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <link rel="stylesheet" href="style.css?v=21.0">
+  <link rel="stylesheet" href="style.css?v=25.0">
 </head>
 <body class="bg-gradient-to-b from-[#180224] via-[#2a043c] to-[#12001c] min-h-screen text-white flex flex-col items-center p-2 sm:p-4 selection:bg-amber-500 font-outfit overflow-x-hidden relative">
 
@@ -171,7 +171,7 @@
           </div>
           
           <div id="card-host-line" class="font-cinzel text-[9px] sm:text-[10.5px] tracking-[0.18em] uppercase font-bold text-amber-200 mt-2 leading-tight">
-            THE DESHPANDE FAMILY WISHES YOU
+            WARMEST FESTIVE WISHES
           </div>
           
           <h3 id="card-heading" class="font-great-vibes text-4xl sm:text-5xl font-normal leading-tight my-1 gold-title text-amber-100 filter drop-shadow-[0_2px_12px_rgba(245,158,11,0.6)]">
@@ -885,18 +885,23 @@
       const headingEl = document.getElementById('card-heading');
       const msgEl = document.getElementById('card-message-text');
 
-      const rawHost = c.senderName ? c.senderName.trim() : (lang === 'ta' ? 'தேஷ்பாண்டே குடும்பத்தினர்' : lang === 'hi' ? 'देशपांडे परिवार' : 'The Deshpande family');
+      const rawHost = c.senderName ? c.senderName.trim() : (lang === 'ta' ? 'எங்கள் குடும்பத்தினர்' : lang === 'hi' ? 'हमारे परिवार' : '');
 
       if (hostLineEl) {
-        if (lang === 'ta') {
-          hostLineEl.className = 'font-tamil text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
-          hostLineEl.textContent = `${rawHost} வழங்கும் தீபாவளி நல்வாழ்த்துகள்`;
-        } else if (lang === 'hi') {
-          hostLineEl.className = 'font-hindi text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
-          hostLineEl.textContent = `${rawHost} की ओर से सपरिवार हार्दिक शुभकामनाएं`;
+        if (rawHost) {
+          if (lang === 'ta') {
+            hostLineEl.className = 'font-tamil text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
+            hostLineEl.textContent = `${rawHost} வழங்கும் தீபாவளி நல்வாழ்த்துகள்`;
+          } else if (lang === 'hi') {
+            hostLineEl.className = 'font-hindi text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
+            hostLineEl.textContent = `${rawHost} की ओर से सपरिवार हार्दिक शुभकामनाएं`;
+          } else {
+            hostLineEl.className = 'font-cinzel text-[9px] sm:text-[10.5px] tracking-[0.18em] uppercase font-bold text-amber-200 mt-2 leading-tight';
+            hostLineEl.textContent = `${rawHost.toUpperCase()} WISHES YOU`;
+          }
         } else {
           hostLineEl.className = 'font-cinzel text-[9px] sm:text-[10.5px] tracking-[0.18em] uppercase font-bold text-amber-200 mt-2 leading-tight';
-          hostLineEl.textContent = `${rawHost.toUpperCase()} WISHES YOU`;
+          hostLineEl.textContent = lang === 'ta' ? 'தீபாவளி நல்வாழ்த்துகள்' : lang === 'hi' ? 'दीपावली की हार्दिक शुभकामनाएं' : 'WARMEST FESTIVE WISHES';
         }
       }
 
@@ -912,7 +917,9 @@
       }
 
       if (msgEl) {
-        msgEl.textContent = c.message || c.customMessage || 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!';
+        const msgText = c.message || c.customMessage || 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!';
+        const subHtml = (c.subtitle && c.subtitle.trim()) ? `<div class="text-[11.5px] sm:text-xs text-amber-200/95 font-outfit mt-1.5 opacity-90">${c.subtitle.trim()}</div>` : '';
+        msgEl.innerHTML = `<div>${msgText}</div>${subHtml}`;
         if (lang === 'ta') {
           msgEl.className = 'font-tamil text-[12px] sm:text-[13px] leading-relaxed text-amber-50/95 font-medium max-w-[94%] mx-auto';
         } else if (lang === 'hi') {
@@ -960,6 +967,24 @@
     try {
       if (_cId) _cached = JSON.parse(localStorage.getItem('dw_card_' + _cId) || 'null');
     } catch (e) {}
+
+    // Check if card parameters are in URL (100% Zero-Loss Delivery on ANY device or Render live link!)
+    if (_p.get('name') || _p.get('msg') || _p.get('sub') || _p.get('h')) {
+      _cached = {
+        ...(_cached || {}),
+        templateId: _uTpl || (_cached ? _cached.templateId : 'navy-lotus'),
+        template: _uTpl || (_cached ? _cached.template : 'navy-lotus'),
+        senderName: _p.get('name') || (_cached ? _cached.senderName : ''),
+        heading: _p.get('h') || (_cached ? _cached.heading : ''),
+        message: _p.get('msg') || (_cached ? _cached.message : ''),
+        subtitle: _p.get('sub') || (_cached ? _cached.subtitle : ''),
+        language: _p.get('lang') || (_cached ? _cached.language : 'en'),
+        fontStyle: _p.get('font') || (_cached ? _cached.fontStyle : 'elegant'),
+        symbol: _p.get('sym') || (_cached ? _cached.symbol : 'none'),
+        familyPhoto: _p.get('p') || (_cached ? _cached.familyPhoto : 'assets/avatar-boy.png')
+      };
+    }
+
     let _initTpl = (_uTpl && VALID_TEMPLATES.includes(_uTpl)) ? _uTpl : null;
     if (!_initTpl && _cached) _initTpl = _cached.templateId || _cached.template;
 
@@ -978,7 +1003,20 @@
           .then(res => res.json())
           .then(data => {
             if (data && data.success && data.card) {
-              const freshCard = { ...(_cached || {}), ...data.card };
+              const freshCard = { ...(_cached || {}) };
+              for (const [key, val] of Object.entries(data.card)) {
+                if (val !== undefined && val !== null && val !== '') {
+                  freshCard[key] = val;
+                }
+              }
+              // URL parameters always take absolute precedence for custom recipient view:
+              if (_p.get('name')) freshCard.senderName = _p.get('name');
+              if (_p.get('h')) freshCard.heading = _p.get('h');
+              if (_p.get('msg')) freshCard.message = _p.get('msg');
+              if (_p.get('sub')) freshCard.subtitle = _p.get('sub');
+              if (_p.get('lang')) freshCard.language = _p.get('lang');
+              if (_p.get('font')) freshCard.fontStyle = _p.get('font');
+              if (_p.get('sym')) freshCard.symbol = _p.get('sym');
               let finalTpl = _initTpl || freshCard.templateId || freshCard.template;
               applyCardToDOM(freshCard, finalTpl);
             }

@@ -583,5 +583,22 @@
     "symbolIcon": "diya",
     "familyPhoto": "assets/avatar-boy.png",
     "createdAt": "2026-11-06T14:03:11.787Z"
+  },
+  "dw_4lp2ep9wqzg": {
+    "id": "dw_4lp2ep9wqzg",
+    "templateId": "crimson-kalash",
+    "template": "crimson-kalash",
+    "heading": "Happy Diwali",
+    "senderName": "demo",
+    "subtitle": "Wishing you and your family abundant peace, prosperity and happiness!",
+    "format": "status",
+    "language": "en",
+    "message": "Wishing you and your family a joyous Diwali filled with love, laughter and prosperous beginnings! hkjhkjhjhkjjkkhjhjhjhj",
+    "customMessage": "Wishing you and your family a joyous Diwali filled with love, laughter and prosperous beginnings! hkjhkjhjhkjjkkhjhjhjhj",
+    "fontStyle": "elegant",
+    "symbol": "diya",
+    "symbolIcon": "diya",
+    "familyPhoto": "assets/avatar-boy.png",
+    "createdAt": "2026-11-06T15:05:42.561Z"
   }
 }
