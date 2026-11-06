@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LC SparkleWish | Happy Diwali Greetings | Festival of Lights</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Marcellus&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css?v=21.0">
+</head>
+<body class="bg-gradient-to-b from-[#180224] via-[#2a043c] to-[#12001c] min-h-screen text-white flex flex-col items-center p-2 sm:p-4 selection:bg-amber-500 font-outfit overflow-x-hidden relative">
+
+  <!-- ==================== ANIMATED FESTIVE BACKGROUND CANVAS ==================== -->
+  <canvas id="bg-fireworks-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- ==================== INSTANT 0ms SCREEN EXPLOSION SCRIPT (ZERO WAIT FOR DOM/FONTS) ==================== -->
+  <script>
+    (function instantScreenBlast() {
+      try {
+        if (typeof confetti === 'function') {
+          // Bottom Left fountain shoot UP
+          confetti({
+            particleCount: 85,
+            angle: 60,
+            spread: 65,
+            startVelocity: 55,
+            origin: { x: 0.10, y: 0.88 },
+            colors: ['#ffd700', '#ef4444', '#f59e0b', '#10b981', '#38bdf8', '#ffffff']
+          });
+          // Bottom Right fountain shoot UP
+          confetti({
+            particleCount: 85,
+            angle: 120,
+            spread: 65,
+            startVelocity: 55,
+            origin: { x: 0.90, y: 0.88 },
+            colors: ['#ffd700', '#f43f5e', '#fbbf24', '#a855f7', '#ffffff', '#10b981']
+          });
+          // Center Sky Starburst
+          confetti({
+            particleCount: 90,
+            spread: 130,
+            origin: { x: 0.5, y: 0.35 },
+            colors: ['#ffe680', '#ffd700', '#ffffff', '#fb923c', '#f43f5e']
+          });
+          // Top Left hanging cracker pop
+          confetti({
+            particleCount: 50,
+            angle: 315,
+            spread: 60,
+            startVelocity: 40,
+            origin: { x: 0.08, y: 0.08 },
+            colors: ['#ef4444', '#ffd700', '#f97316', '#ffffff']
+          });
+          // Top Right hanging cracker pop
+          confetti({
+            particleCount: 50,
+            angle: 225,
+            spread: 60,
+            startVelocity: 40,
+            origin: { x: 0.92, y: 0.08 },
+            colors: ['#ffd700', '#ffffff', '#f43f5e', '#a855f7']
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- ==================== ANIMATED TOP CORNER FESTIVE ACCENTS (corner.gif) ==================== -->
+  <!-- Top Left Corner GIF (Click to Burst!) -->
+  <div id="corner-cracker-left" onclick="burstCornerCracker(event, 'left')" title="Click to Burst!" class="fixed top-0 left-0 z-30 pointer-events-auto cursor-pointer select-none group origin-top-left hover:scale-105 active:scale-95 transition-transform duration-200">
+    <div class="relative">
+      <img src="assets/corner.gif?v=2.1" alt="Diwali Corner Accent" class="w-9 xs:w-11 sm:w-20 md:w-28 h-auto object-contain filter drop-shadow-[0_4px_18px_rgba(245,158,11,0.6)] group-hover:brightness-125 transition-all">
+      <!-- Tooltip -->
+      <div class="absolute top-2 left-10 sm:left-24 text-[10px] font-bold text-amber-300 bg-black/85 px-2.5 py-0.5 rounded-full border border-amber-400/40 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-[0_0_10px_#f59e0b] pointer-events-none flex items-center gap-1 font-marcellus">
+        <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
+        <span>Click to Burst!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Right Corner GIF (Mirrored, Click to Burst!) -->
+  <div id="corner-cracker-right" onclick="burstCornerCracker(event, 'right')" title="Click to Burst!" class="fixed top-0 right-0 z-30 pointer-events-auto cursor-pointer select-none group origin-top-right hover:scale-105 active:scale-95 transition-transform duration-200">
+    <div class="relative">
+      <img src="assets/corner.gif?v=2.1" alt="Diwali Corner Accent" class="w-9 xs:w-11 sm:w-20 md:w-28 h-auto object-contain scale-x-[-1] filter drop-shadow-[0_4px_18px_rgba(245,158,11,0.6)] group-hover:brightness-125 transition-all">
+      <!-- Tooltip -->
+      <div class="absolute top-2 right-10 sm:right-24 text-[10px] font-bold text-amber-300 bg-black/85 px-2.5 py-0.5 rounded-full border border-amber-400/40 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-[0_0_10px_#f59e0b] pointer-events-none flex items-center gap-1 font-marcellus">
+        <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
+        <span>Click to Burst!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Golden Glow -->
+  <div class="fixed top-12 left-1/2 -translate-x-1/2 w-full max-w-[500px] h-[300px] bg-amber-500/15 rounded-full blur-[140px] pointer-events-none overflow-hidden"></div>
+
+  <!-- Header (Perfect clear padding between corner crackers on all mobile screens) -->
+  <header class="w-full max-w-md mx-auto pt-2 sm:pt-4 pb-2 px-8 xs:px-10 sm:px-4 flex items-center justify-between relative z-10 gap-1.5 sm:gap-2 box-border">
+    <a href="/" class="flex items-center space-x-1.5 group shrink min-w-0">
+      <span class="filter drop-shadow-[0_0_12px_#f59e0b] text-amber-400 animate-bounce shrink-0">
+        <svg class="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c.6 1.8 2 3.2 2 4.8a2 2 0 1 1-4 0C10 5.2 11.4 3.8 12 2z" fill="#fde047"/>
+          <path d="M4 13.5c0 4 3.6 7.5 8 7.5s8-3.5 8-7.5c0-1.2-1-2-2.2-2H6.2C5 11.5 4 12.3 4 13.5z" fill="#f59e0b"/>
+        </svg>
+      </span>
+      <div class="flex flex-col min-w-0">
+        <span class="text-[12px] xs:text-base sm:text-lg font-black font-cinzel sparkle-wish-title tracking-normal sm:tracking-wider uppercase leading-none whitespace-nowrap">
+          LC Sparkle<span class="text-amber-300 font-light">Wish</span>
+          <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 ml-0.5 text-amber-300 inline-block animate-spin"></i>
+        </span>
+        <span class="text-[8.5px] sm:text-[10px] text-amber-200/80 font-medium tracking-wider font-marcellus mt-0.5 hidden sm:block">Light Up. Wish Big. Spread Happiness.</span>
+      </div>
+    </a>
+    <a href="/" class="px-2 xs:px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[10px] xs:text-[11px] sm:text-xs font-semibold hover:shadow-[0_0_15px_#f59e0b] hover:scale-105 transition-all shadow-md flex items-center gap-1 sm:gap-1.5 shrink-0 whitespace-nowrap">
+      <span>Create</span>
+      <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
+    </a>
+  </header>
+
+  <!-- Centered Card Container (Natural framing without top clipping) -->
+  <main class="w-full max-w-sm mx-auto flex-1 flex flex-col items-center justify-center py-2 sm:py-3 px-2 sm:px-0 relative z-10">
+    
+    <div id="card-render-wrapper" class="w-full flex justify-center drop-shadow-2xl relative">
+      
+      <div id="greeting-card" class="card-status-ratio relative overflow-hidden flex flex-col justify-between p-4 sm:p-5 text-center rounded-3xl border border-amber-400/50 shadow-[0_0_40px_rgba(245,158,11,0.35)] transition-all duration-300 hover:scale-[1.01] animate-gentle-float">
+        <script>
+          // Synchronous Template Class Injection (Runs during HTML parsing - ZERO purple flash!)
+          (function() {
+            try {
+              const p = new URLSearchParams(window.location.search);
+              const cardId = p.get('id');
+              let t = p.get('tpl');
+              if (!t && cardId) {
+                const c = JSON.parse(localStorage.getItem('dw_card_' + cardId) || 'null');
+                if (c) t = c.templateId || c.template;
+              }
+              const card = document.getElementById('greeting-card');
+              if (card && t) {
+                card.classList.add('tpl-' + t);
+              }
+            } catch(e) {}
+          })();
+        </script>
+        
+        <!-- Inner Gold Filigree Frame -->
+        <div class="card-inner-frame"></div>
+
+        <!-- Top Artwork Slot -->
+        <div id="card-artwork-container" class="w-full flex justify-center items-center pt-2 sm:pt-3 px-2 min-h-[135px] sm:min-h-[148px] relative z-10">
+          <div class="absolute w-44 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
+        </div>
+
+        <!-- Sanskrit Mantra / Invocations -->
+        <div id="card-mantra-container" class="text-center px-4 my-0.5">
+          <div id="card-symbol" class="inline-flex items-center justify-center filter drop-shadow hidden"></div>
+          <div id="card-mantra" class="text-[9.5px] font-hindi tracking-widest text-amber-200/95 font-semibold"></div>
+        </div>
+
+        <!-- Center Family Crest & Heading -->
+        <div class="my-auto py-2 px-3 flex flex-col items-center">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-[#f5d061] p-0.5 shadow-[0_0_20px_rgba(245,158,11,0.55)] overflow-hidden bg-amber-950/60 mx-auto">
+            <img id="card-family-img" src="assets/default_avatar.svg" alt="Profile" class="w-full h-full object-cover rounded-full">
+          </div>
+          
+          <div id="card-host-line" class="font-cinzel text-[9px] sm:text-[10.5px] tracking-[0.18em] uppercase font-bold text-amber-200 mt-2 leading-tight">
+            THE DESHPANDE FAMILY WISHES YOU
+          </div>
+          
+          <h3 id="card-heading" class="font-great-vibes text-4xl sm:text-5xl font-normal leading-tight my-1 gold-title text-amber-100 filter drop-shadow-[0_2px_12px_rgba(245,158,11,0.6)]">
+            Happy Diwali
+          </h3>
+        </div>
+
+        <!-- Heartfelt Wishes Body -->
+        <div class="px-4 my-auto">
+          <p id="card-message-text" class="font-outfit text-[13px] sm:text-[14px] leading-relaxed text-amber-50/95 font-medium max-w-[94%] mx-auto">
+            Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!
+          </p>
+        </div>
+
+        <!-- Festive Blessings Footer (No Formal RSVP / Venue) -->
+        <div id="card-footer-container" class="w-full pt-3 pb-2 px-3 border-t border-amber-400/25 mt-auto font-outfit text-center">
+          <div class="flex items-center justify-center space-x-2 text-amber-300 text-[10px] sm:text-[11px] tracking-widest uppercase font-semibold">
+            <span class="text-xs">✦</span>
+            <span>Peace • Prosperity • Happiness</span>
+            <span class="text-xs">✦</span>
+          </div>
+          <div id="card-sender-sign" class="text-xs sm:text-[13px] font-bold font-marcellus text-amber-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mt-0.5 tracking-wider">
+            Warmest Wishes & Joy From Our Family To Yours
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Grand Regal "Create Your Own Card" CTA Button -->
+    <div class="mt-5 sm:mt-6 flex flex-col w-full items-center">
+      <a href="/" class="royal-create-btn w-full py-3 sm:py-3.5 px-6 rounded-full text-stone-950 font-black font-cinzel text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center space-x-2 cursor-pointer border-2 border-yellow-200/90 group select-none">
+        <i data-lucide="sparkles" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-950 animate-bounce"></i>
+        <span>Create Your Own Free Card</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-950 group-hover:translate-x-1.5 transition-transform"></i>
+      </a>
+      <p class="text-[10.5px] sm:text-[11px] text-amber-200/75 font-medium tracking-wide mt-2 flex items-center gap-1 font-outfit">
+        <span>✨ 100% Free • 10 Festive Templates • 30 Seconds</span>
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ==================== ANIMATED CORNER FESTIVE CRACKERS ==================== -->
+  <!-- Bottom Left: Animated Thara Chakaram (Ground Spinner) -->
+  <div id="clickable-chakaram" onclick="burstChakaram(event)" title="Click to Spin & Burst Chakaram!" class="fixed bottom-2 sm:bottom-5 left-1 sm:left-5 z-20 pointer-events-auto cursor-pointer select-none scale-75 sm:scale-100 origin-bottom-left group hover:scale-105 active:scale-95 transition-transform duration-200">
+    <div class="relative w-24 h-24 flex flex-col items-center justify-center">
+      <!-- Click Hint Tooltip -->
+      <div class="absolute -top-7 left-0 text-[10px] font-bold text-amber-300 bg-black/85 px-2.5 py-0.5 rounded-full border border-amber-400/40 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-[0_0_10px_#f59e0b] flex items-center gap-1 pointer-events-none">
+        <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
+        <span>Click to Spin!</span>
+      </div>
+      <!-- Whirling Wheel & Fire Glow -->
+      <div class="relative w-20 h-20 chakra-glow-container">
+        <!-- Rapid Spinning Central Chakra -->
+        <div class="chakra-wheel w-full h-full rounded-full p-1 bg-gradient-to-tr from-yellow-300 via-red-500 to-purple-600 shadow-[0_0_22px_#f59e0b] flex items-center justify-center">
+          <svg viewBox="0 0 80 80" class="w-full h-full">
+            <circle cx="40" cy="40" r="36" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="8 4" fill="#701a75"/>
+            <path d="M40 40 Q25 20 40 4 Q55 20 40 40" fill="#f59e0b"/>
+            <path d="M40 40 Q60 25 76 40 Q60 55 40 40" fill="#ef4444"/>
+            <path d="M40 40 Q55 60 40 76 Q25 60 40 40" fill="#10b981"/>
+            <path d="M40 40 Q20 55 4 40 Q20 25 40 40" fill="#3b82f6"/>
+            <circle cx="40" cy="40" r="7" fill="#fef08a"/>
+          </svg>
+        </div>
+        <!-- Reverse Whirling Spark Dashed Ring -->
+        <div class="chakra-outer-ring absolute -inset-2.5 rounded-full border-2 border-dashed border-amber-300/85"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Right: Cute Animated Boy Lighting Cracker (giftwo.gif) -->
+  <div id="clickable-busuvanam" onclick="burstBusuvanam(event)" title="Click to Burst!" class="fixed bottom-2 sm:bottom-5 right-1 sm:right-5 z-20 pointer-events-auto cursor-pointer select-none scale-75 sm:scale-100 origin-bottom-right group hover:scale-105 active:scale-95 transition-transform duration-200">
+    <div class="relative w-24 h-24 flex flex-col items-center justify-center">
+      <!-- Click Hint Tooltip -->
+      <div class="absolute -top-7 right-0 text-[10px] font-bold text-amber-300 bg-black/85 px-2.5 py-0.5 rounded-full border border-amber-400/40 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-[0_0_10px_#f59e0b] z-30 font-marcellus flex items-center gap-1 pointer-events-none">
+        <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
+        <span>Click to Burst!</span>
+      </div>
+      
+      <!-- Whirling Outer Glow Container -->
+      <div class="relative w-20 h-20 chakra-glow-container flex items-center justify-center">
+        <!-- Circular Animated GIF -->
+        <div class="w-full h-full rounded-full overflow-hidden border-2 border-amber-400 p-0.5 bg-gradient-to-tr from-yellow-300 via-orange-500 to-purple-700 shadow-[0_0_22px_#f59e0b]">
+          <img src="assets/giftwo.gif" alt="Boy Lighting Diwali Cracker" class="w-full h-full object-cover rounded-full">
+        </div>
+        <!-- Reverse Whirling Outer Dashed Spark Ring -->
+        <div class="chakra-outer-ring absolute -inset-2.5 rounded-full border-2 border-dashed border-amber-300/85 pointer-events-none"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="w-full bg-[#110217]/90 border-t border-amber-500/20 py-4 px-4 text-center mt-auto relative z-10 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="select-none opacity-90 pl-2 text-amber-300">
+        <i data-lucide="party-popper" class="w-5 h-5"></i>
+      </div>
+      <div class="flex flex-col items-center justify-center text-center">
+        <p class="text-[11.5px] sm:text-xs text-amber-100/85 font-outfit">
+          &copy; 2026 LifeChangersIND. All rights reserved.
+        </p>
+        <a 
+          href="https://lifechangersind.com/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-xs sm:text-[13px] font-semibold text-amber-400 hover:text-amber-300 hover:underline tracking-wide transition-all mt-0.5"
+          title="Visit LifeChangersIND Official Website"
+        >
+          lifechangersind.com
+        </a>
+      </div>
+      <div class="select-none opacity-90 pr-2 filter drop-shadow-[0_0_10px_#f59e0b] text-amber-400">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c.6 1.8 2 3.2 2 4.8a2 2 0 1 1-4 0C10 5.2 11.4 3.8 12 2z" fill="#fde047"/>
+          <path d="M4 13.5c0 4 3.6 7.5 8 7.5s8-3.5 8-7.5c0-1.2-1-2-2.2-2H6.2C5 11.5 4 12.3 4 13.5z" fill="#f59e0b"/>
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const GOLD_DEFS = `
+      <defs>
+        <linearGradient id="gGoldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="18%" stop-color="#fff2b2"/>
+          <stop offset="42%" stop-color="#fed776"/>
+          <stop offset="70%" stop-color="#d4af37"/>
+          <stop offset="88%" stop-color="#b38217"/>
+          <stop offset="100%" stop-color="#6b4604"/>
+        </linearGradient>
+        <linearGradient id="gGoldRich" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#fff8d6"/>
+          <stop offset="45%" stop-color="#eab308"/>
+          <stop offset="100%" stop-color="#854d0e"/>
+        </linearGradient>
+        <linearGradient id="gFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#dc2626"/>
+          <stop offset="35%" stop-color="#ea580c"/>
+          <stop offset="70%" stop-color="#facc15"/>
+          <stop offset="100%" stop-color="#ffffff"/>
+        </linearGradient>
+        <radialGradient id="gAura" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95"/>
+          <stop offset="45%" stop-color="#f59e0b" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gClayBowl" cx="50%" cy="20%" r="80%">
+          <stop offset="0%" stop-color="#f97316"/>
+          <stop offset="60%" stop-color="#c2410c"/>
+          <stop offset="100%" stop-color="#7c2d12"/>
+        </radialGradient>
+      </defs>
+    `;
+
+    const TPL_ART_SVGS = {
+      'navy-lotus': `<img src="assets/real_art_navy_lotus.png" alt="Royal Lotus Diya" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(253,224,71,0.65)] select-none pointer-events-none">`,
+      'clay-diya': `<img src="assets/real_art_clay_diya.png" alt="Painted Clay Diya" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(253,224,71,0.65)] select-none pointer-events-none">`,
+      'crimson-kalash': `<img src="assets/real_art_crimson_kalash.png" alt="Poornakumbha Kalash" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(253,230,138,0.65)] select-none pointer-events-none">`,
+      'emerald-ganesh': `<img src="assets/real_art_crackers.png" alt="Diwali Crackers & Flowerpots" class="h-32 sm:h-36 w-auto max-w-[95%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(251,191,36,0.7)] select-none pointer-events-none">`,
+      'akash-kandil': `<img src="assets/real_art_akash_kandil.png" alt="Festive Akash Kandil" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(245,158,11,0.65)] select-none pointer-events-none">`,
+      'midnight-gold': `<img src="assets/real_art_midnight_gold.png" alt="South Indian Brass Kuthu Vilakku" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(251,191,36,0.65)] select-none pointer-events-none">`,
+      'tree-of-life': `<img src="assets/real_art_tree_of_life.png" alt="Pichwai Tree of Life" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(250,225,156,0.65)] select-none pointer-events-none">`,
+      'marigold-toran': `<img src="assets/real_art_marigold_toran.png" alt="Fresh Marigold Toran Garland" class="h-28 sm:h-32 w-auto max-w-[95%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(251,191,36,0.65)] select-none pointer-events-none">`,
+      'royal-purple': `<img src="assets/real_art_royal_purple.png" alt="Royal Golden Peacock Diya" class="h-32 sm:h-36 w-auto max-w-[90%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(254,240,138,0.65)] select-none pointer-events-none">`,
+      'golden-rangoli': `<img src="assets/real_art_crackers.png" alt="Diwali Crackers & Sparks" class="h-32 sm:h-36 w-auto max-w-[95%] mx-auto object-contain filter drop-shadow-[0_8px_25px_rgba(251,191,36,0.7)] select-none pointer-events-none">`
+    };
+
+    const ART_MAP = {
+      'navy-lotus': 'assets/art_navy_lotus.png',
+      'clay-diya': 'assets/art_clay_diya.png',
+      'crimson-kalash': 'assets/art_crimson_kalash.png',
+      'emerald-ganesh': 'assets/real_art_crackers.png',
+      'akash-kandil': 'assets/art_akash_kandil.png',
+      'midnight-gold': 'assets/art_midnight_gold.png',
+      'tree-of-life': 'assets/art_tree_of_life.png',
+      'marigold-toran': 'assets/art_marigold_toran.png',
+      'royal-purple': 'assets/art_royal_purple.png',
+      'golden-rangoli': 'assets/art_golden_rangoli.png'
+    };
+
+    // Realistic Web Audio Cracker Pop Sound
+    function playCrackerBurstSound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        const bufferSize = Math.floor(ctx.sampleRate * 0.35);
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.08));
+        }
+
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 850;
+
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.7, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        noise.start();
+      } catch (e) {}
+    }
+
+    // Instant Grand Opening Crackers (0ms) & Multi-Wave Continuous Celebration
+    let festiveContinuousInterval = null;
+    function startContinuousFestiveBursts() {
+      // Wave 1: Immediate Instant Double Fountain Shoot (0ms) + Sky Starburst
+      try {
+        playCrackerBurstSound();
+        confetti({
+          particleCount: 90,
+          angle: 60,
+          spread: 65,
+          startVelocity: 55,
+          origin: { x: 0.10, y: 0.85 },
+          colors: ['#ffd700', '#ef4444', '#f59e0b', '#10b981', '#38bdf8', '#ffffff'],
+          shapes: ['circle', 'square', 'star']
+        });
+        confetti({
+          particleCount: 90,
+          angle: 120,
+          spread: 65,
+          startVelocity: 55,
+          origin: { x: 0.90, y: 0.85 },
+          colors: ['#ffd700', '#f43f5e', '#fbbf24', '#a855f7', '#ffffff', '#10b981'],
+          shapes: ['circle', 'square', 'star']
+        });
+        confetti({
+          particleCount: 90,
+          spread: 120,
+          origin: { x: 0.5, y: 0.35 },
+          colors: ['#ffe680', '#ffd700', '#ffffff', '#fb923c', '#f43f5e'],
+          shapes: ['star']
+        });
+      } catch (e) {}
+
+      // Wave 2 (120ms): Top corner hanging crackers explosion
+      setTimeout(() => {
+        try {
+          burstCornerCracker(null, 'left');
+          burstCornerCracker(null, 'right');
+        } catch (e) {}
+      }, 120);
+
+      // Wave 3 (300ms): Twin golden sky burst
+      setTimeout(() => {
+        try {
+          playCrackerBurstSound();
+          confetti({
+            particleCount: 75,
+            spread: 90,
+            origin: { x: 0.35, y: 0.30 },
+            colors: ['#ffd700', '#fbbf24', '#ffffff', '#f43f5e'],
+            shapes: ['circle', 'star']
+          });
+          confetti({
+            particleCount: 75,
+            spread: 90,
+            origin: { x: 0.65, y: 0.30 },
+            colors: ['#38bdf8', '#34d399', '#ffffff', '#e879f9'],
+            shapes: ['circle', 'star']
+          });
+        } catch (e) {}
+      }, 300);
+
+      // Wave 4 (550ms): Bottom chakaram & busuvanam twin burst
+      setTimeout(() => {
+        try {
+          burstChakaram(null);
+          burstBusuvanam(null);
+        } catch (e) {}
+      }, 550);
+
+      // Continuous Grand Fireworks ("rmba burst irunthutey irukanum - continuous every 1.2s")
+      if (festiveContinuousInterval) clearInterval(festiveContinuousInterval);
+      festiveContinuousInterval = setInterval(() => {
+        const x = 0.10 + Math.random() * 0.80;
+        const y = 0.20 + Math.random() * 0.45;
+        confetti({
+          particleCount: Math.floor(Math.random() * 30) + 45,
+          spread: Math.floor(Math.random() * 40) + 65,
+          origin: { x, y },
+          colors: ['#ffd700', '#ff3366', '#f59e0b', '#10b981', '#ffffff', '#a855f7', '#38bdf8'],
+          shapes: ['circle', 'square', 'star']
+        });
+        if (typeof playCrackerBurstSound === 'function') {
+          playCrackerBurstSound();
+        }
+      }, 1200);
+    }
+
+    // Interactive Top Hanging String Crackers (corner.gif) Click Explosion
+    function burstCornerCracker(e, side) {
+      if (e) e.stopPropagation();
+      // Rapid firecracker string sequence (ladi patakha crackle)
+      playCrackerBurstSound();
+      setTimeout(() => playCrackerBurstSound(), 90);
+      setTimeout(() => playCrackerBurstSound(), 180);
+      setTimeout(() => playCrackerBurstSound(), 280);
+      setTimeout(() => playCrackerBurstSound(), 390);
+
+      const el = document.getElementById(side === 'left' ? 'corner-cracker-left' : 'corner-cracker-right');
+      if (el) {
+        el.classList.add('scale-115', 'brightness-150');
+        setTimeout(() => el.classList.remove('scale-115', 'brightness-150'), 400);
+      }
+
+      const x = side === 'left' ? 0.08 : 0.92;
+      const angle = side === 'left' ? 315 : 225; // shooting downwards-inwards from top corner
+
+      confetti({
+        particleCount: 70,
+        angle: angle,
+        spread: 60,
+        startVelocity: 45,
+        origin: { x: x, y: 0.08 },
+        colors: ['#ef4444', '#ffd700', '#f97316', '#ffffff', '#fbbf24'],
+        shapes: ['circle', 'square']
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          angle: angle,
+          spread: 75,
+          startVelocity: 50,
+          origin: { x: x, y: 0.12 },
+          colors: ['#ffd700', '#ffffff', '#f43f5e', '#a855f7'],
+          shapes: ['star']
+        });
+      }, 150);
+    }
+
+    // Interactive Busuvanam (Flowerpot) Click Explosion
+    function burstBusuvanam(e) {
+      if (e) e.stopPropagation();
+      playCrackerBurstSound();
+      setTimeout(() => playCrackerBurstSound(), 180);
+      setTimeout(() => playCrackerBurstSound(), 360);
+
+      const el = document.getElementById('clickable-busuvanam');
+      if (el) {
+        el.classList.add('scale-125', 'brightness-150');
+        setTimeout(() => el.classList.remove('scale-125', 'brightness-150'), 450);
+      }
+
+      const rect = el ? el.getBoundingClientRect() : null;
+      const x = rect ? (rect.right - 35) / window.innerWidth : 0.85;
+      const y = rect ? (rect.bottom - 25) / window.innerHeight : 0.85;
+
+      // Giant Spark Fountain Spray shooting straight UP
+      confetti({
+        particleCount: 85,
+        angle: 85,
+        spread: 65,
+        startVelocity: 55,
+        origin: { x: x, y: y },
+        colors: ['#ffe680', '#ffd700', '#ff9900', '#ffffff', '#f43f5e', '#a855f7'],
+        shapes: ['star', 'circle']
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 65,
+          angle: 90,
+          spread: 80,
+          startVelocity: 65,
+          origin: { x: x, y: y },
+          colors: ['#ffd700', '#ffffff', '#fb923c', '#38bdf8'],
+          shapes: ['star']
+        });
+      }, 160);
+    }
+
+    // Interactive Thara Chakaram (Ground Spinner) Click Explosion
+    function burstChakaram(e) {
+      if (e) e.stopPropagation();
+      playCrackerBurstSound();
+      setTimeout(() => playCrackerBurstSound(), 200);
+      setTimeout(() => playCrackerBurstSound(), 400);
+
+      const el = document.getElementById('clickable-chakaram');
+      if (el) {
+        el.classList.add('scale-125', 'brightness-150');
+        setTimeout(() => el.classList.remove('scale-125', 'brightness-150'), 450);
+      }
+
+      const rect = el ? el.getBoundingClientRect() : null;
+      const x = rect ? (rect.left + rect.width / 2) / window.innerWidth : 0.85;
+      const y = rect ? (rect.top + rect.height / 2) / window.innerHeight : 0.85;
+
+      // 360-degree Whirling Radial Sparks Ring
+      confetti({
+        particleCount: 95,
+        spread: 360,
+        startVelocity: 42,
+        origin: { x: x, y: y },
+        colors: ['#ffd700', '#ef4444', '#10b981', '#3b82f6', '#f59e0b', '#ffffff'],
+        shapes: ['circle', 'square']
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 70,
+          spread: 360,
+          startVelocity: 52,
+          origin: { x: x, y: y },
+          colors: ['#ffd700', '#f97316', '#ffffff', '#ec4899'],
+          shapes: ['star']
+        });
+      }, 200);
+    }
+
+    // Multi-Point Cracker Burst & Confetti Spectacular
+    function triggerFestiveBurst() {
+      playCrackerBurstSound();
+      setTimeout(() => playCrackerBurstSound(), 180);
+      setTimeout(() => playCrackerBurstSound(), 360);
+      setTimeout(() => playCrackerBurstSound(), 540);
+
+      // Left fountain shoot
+      confetti({
+        particleCount: 60,
+        angle: 60,
+        spread: 55,
+        startVelocity: 55,
+        origin: { x: 0.1, y: 0.85 },
+        colors: ['#ffd700', '#ff3366', '#f59e0b', '#10b981', '#38bdf8'],
+        shapes: ['circle', 'square']
+      });
+
+      // Right fountain shoot
+      confetti({
+        particleCount: 60,
+        angle: 120,
+        spread: 55,
+        startVelocity: 55,
+        origin: { x: 0.9, y: 0.85 },
+        colors: ['#ffd700', '#f43f5e', '#fbbf24', '#a855f7', '#ffffff'],
+        shapes: ['circle', 'square']
+      });
+
+      // Center sky starburst
+      setTimeout(() => {
+        confetti({
+          particleCount: 75,
+          spread: 100,
+          origin: { y: 0.4, x: 0.5 },
+          colors: ['#ffe680', '#ffd700', '#ffffff', '#fb923c'],
+          shapes: ['star']
+        });
+      }, 220);
+    }
+
+    // Continuous Canvas Fireworks
+    function initBackgroundFireworks() {
+      const canvas = document.getElementById('bg-fireworks-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const fireworks = [];
+      const THEME_COLORS = ['#ffd700', '#f59e0b', '#f43f5e', '#fb7185', '#fbbf24', '#ffffff', '#e879f9', '#c084fc', '#34d399'];
+
+      class Firework {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = height;
+          this.targetY = Math.random() * (height * 0.45) + 30;
+          this.speed = Math.random() * 3.5 + 4.5;
+          this.angle = -Math.PI / 2 + (Math.random() - 0.5) * 0.25;
+          this.vx = Math.cos(this.angle) * this.speed;
+          this.vy = Math.sin(this.angle) * this.speed;
+          this.color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+          this.alive = true;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.04;
+          if (this.vy >= 0 || this.y <= this.targetY) {
+            this.explode();
+            this.alive = false;
+          }
+        }
+        explode() {
+          const count = Math.floor(Math.random() * 25) + 30;
+          for (let i = 0; i < count; i++) {
+            particles.push(new Particle(this.x, this.y, this.color));
+          }
+        }
+        draw() {
+          ctx.save();
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      class Particle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 3.5 + 1;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.016 + 0.012;
+          this.size = Math.random() * 2.5 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.045;
+          this.vx *= 0.98;
+          this.vy *= 0.98;
+          this.alpha -= this.decay;
+        }
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, this.alpha);
+          ctx.fillStyle = this.color;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      // ==================== INTERACTIVE CLICK-TO-BURST CRACKER PARTICLES ====================
+      class ClickSparkleParticle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 5.5 + 2.0;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.022 + 0.016;
+          this.size = Math.random() * 2.8 + 1.2;
+          this.flicker = Math.random() > 0.3;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.08;
+          this.vx *= 0.96;
+          this.vy *= 0.96;
+          this.alpha -= this.decay;
+        }
+        draw() {
+          ctx.save();
+          const curAlpha = this.flicker && Math.random() > 0.4 ? this.alpha * 0.6 : this.alpha;
+          ctx.globalAlpha = Math.max(0, curAlpha);
+          ctx.fillStyle = this.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (this.size > 2.5 && this.alpha > 0.45) {
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(this.x - 3, this.y);
+            ctx.lineTo(this.x + 3, this.y);
+            ctx.moveTo(this.x, this.y - 3);
+            ctx.lineTo(this.x, this.y + 3);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      }
+
+      const CLICK_BURST_COLORS = ['#ffd700', '#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff', '#00f5d4', '#ffffff', '#f43f5e'];
+
+      function spawnClickBurst(x, y) {
+        const count = Math.floor(Math.random() * 12) + 28;
+        for (let i = 0; i < count; i++) {
+          const color = CLICK_BURST_COLORS[Math.floor(Math.random() * CLICK_BURST_COLORS.length)];
+          particles.push(new ClickSparkleParticle(x, y, color));
+        }
+        if (typeof playCrackerBurstSound === 'function') {
+          playCrackerBurstSound();
+        }
+      }
+
+      window.addEventListener('pointerdown', (e) => {
+        if (e.target && (e.target.tagName === 'A' || e.target.tagName === 'BUTTON')) {
+          return;
+        }
+        spawnClickBurst(e.clientX, e.clientY);
+      });
+
+      function loop() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Frequent grand fireworks rockets shooting up into the festive night sky
+        if (Math.random() < 0.24) {
+          fireworks.push(new Firework());
+        }
+
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+          fireworks[i].update();
+          fireworks[i].draw();
+          if (!fireworks[i].alive) fireworks.splice(i, 1);
+        }
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          particles[i].update();
+          particles[i].draw();
+          if (particles[i].alpha <= 0) particles.splice(i, 1);
+        }
+
+        requestAnimationFrame(loop);
+      }
+
+      // Initial instant rocket launches across the screen (frame 0)
+      fireworks.push(new Firework());
+      fireworks.push(new Firework());
+      fireworks.push(new Firework());
+      fireworks.push(new Firework());
+      loop();
+    }
+
+    const SYMBOL_SVGS = {
+      flowerpot: `<img src="assets/mini_flowerpot.png" alt="Flowerpot" class="h-10 w-10 object-contain filter drop-shadow-[0_4px_12px_rgba(251,191,36,0.85)] inline-block select-none pointer-events-none">`,
+      rocket: `<img src="assets/mini_rocket.png" alt="Rocket" class="h-10 w-10 object-contain filter drop-shadow-[0_4px_12px_rgba(239,68,68,0.85)] inline-block select-none pointer-events-none">`,
+      sparkler: `<img src="assets/mini_sparkler.png" alt="Sparkler" class="h-10 w-10 object-contain filter drop-shadow-[0_4px_12px_rgba(250,204,21,0.85)] inline-block select-none pointer-events-none">`,
+      diya: `<img src="assets/mini_diya.png" alt="Diya" class="h-10 w-10 object-contain filter drop-shadow-[0_4px_12px_rgba(245,158,11,0.85)] inline-block select-none pointer-events-none">`,
+      crackers: `<img src="assets/mini_crackers.png" alt="Crackers" class="h-10 w-10 object-contain filter drop-shadow-[0_4px_12px_rgba(220,38,38,0.85)] inline-block select-none pointer-events-none">`,
+      ganesh: `<img src="assets/mini_diya.png" alt="Diya" class="h-10 w-10 object-contain inline-block">`,
+      lakshmi: `<img src="assets/mini_flowerpot.png" alt="Flowerpot" class="h-10 w-10 object-contain inline-block">`,
+      om: `<img src="assets/mini_sparkler.png" alt="Sparkler" class="h-10 w-10 object-contain inline-block">`
+    };
+
+    const VALID_TEMPLATES = [
+      'navy-lotus', 'clay-diya', 'crimson-kalash', 'emerald-ganesh',
+      'akash-kandil', 'midnight-gold', 'tree-of-life', 'marigold-toran',
+      'royal-purple', 'golden-rangoli'
+    ];
+
+    function applyCardToDOM(c, forcedTpl) {
+      if (!c) c = {};
+      let tplId = forcedTpl;
+      if (!tplId && c.templateId && VALID_TEMPLATES.includes(c.templateId)) tplId = c.templateId;
+      if (!tplId && c.template && VALID_TEMPLATES.includes(c.template)) tplId = c.template;
+      if (!tplId) tplId = 'navy-lotus';
+
+      const cardEl = document.getElementById('greeting-card');
+      if (cardEl) {
+        cardEl.className = 'card-status-ratio relative overflow-hidden flex flex-col justify-between p-4 sm:p-5 text-center rounded-3xl border border-amber-400/40 shadow-2xl tpl-' + tplId;
+      }
+
+      // Artwork Injection
+      const artContainer = document.getElementById('card-artwork-container');
+      if (TPL_ART_SVGS[tplId] && artContainer) {
+        artContainer.innerHTML = TPL_ART_SVGS[tplId];
+      } else {
+        const artImg = document.getElementById('card-artwork-img');
+        if (artImg) artImg.src = ART_MAP[tplId] || 'assets/art_navy_lotus.png';
+      }
+
+      // Sacred Sanskrit Mantra / Invocations
+      const TPL_MANTRAS = {
+        'crimson-kalash': '॥ श्री लक्ष्मी प्रसन्न ॥',
+        'emerald-ganesh': '॥ शुभ दीपावली ॥',
+        'tree-of-life': '॥ श्री गणेशाय नमः ॥',
+        'marigold-toran': '॥ श्री लक्ष्मी प्रसन्न ॥',
+        'golden-rangoli': '॥ शुभ दीपावली ॥'
+      };
+      const mantraEl = document.getElementById('card-mantra');
+      if (mantraEl) {
+        mantraEl.textContent = TPL_MANTRAS[tplId] || '';
+      }
+
+      const famImg = document.getElementById('card-family-img');
+      if (famImg) famImg.src = c.familyPhoto || 'assets/avatar-boy.png';
+
+      const lang = c.language || 'en';
+      const hostLineEl = document.getElementById('card-host-line');
+      const headingEl = document.getElementById('card-heading');
+      const msgEl = document.getElementById('card-message-text');
+
+      const rawHost = c.senderName ? c.senderName.trim() : (lang === 'ta' ? 'தேஷ்பாண்டே குடும்பத்தினர்' : lang === 'hi' ? 'देशपांडे परिवार' : 'The Deshpande family');
+
+      if (hostLineEl) {
+        if (lang === 'ta') {
+          hostLineEl.className = 'font-tamil text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
+          hostLineEl.textContent = `${rawHost} வழங்கும் தீபாவளி நல்வாழ்த்துகள்`;
+        } else if (lang === 'hi') {
+          hostLineEl.className = 'font-hindi text-[10.5px] sm:text-[12px] font-semibold text-amber-200 mt-2 leading-tight tracking-normal';
+          hostLineEl.textContent = `${rawHost} की ओर से सपरिवार हार्दिक शुभकामनाएं`;
+        } else {
+          hostLineEl.className = 'font-cinzel text-[9px] sm:text-[10.5px] tracking-[0.18em] uppercase font-bold text-amber-200 mt-2 leading-tight';
+          hostLineEl.textContent = `${rawHost.toUpperCase()} WISHES YOU`;
+        }
+      }
+
+      if (headingEl) {
+        headingEl.textContent = c.heading || (lang === 'ta' ? 'இனிய தீபாவளி நல்வாழ்த்துகள்' : lang === 'hi' ? 'शुभ दीपावली' : 'Happy Diwali');
+        if (lang === 'ta') {
+          headingEl.className = 'font-tamil text-2xl sm:text-3xl font-bold leading-tight my-1 gold-title text-amber-100 filter drop-shadow-[0_2px_12px_rgba(245,158,11,0.6)]';
+        } else if (lang === 'hi') {
+          headingEl.className = 'font-hindi text-2xl sm:text-3xl font-bold leading-tight my-1 gold-title text-amber-100 filter drop-shadow-[0_2px_12px_rgba(245,158,11,0.6)]';
+        } else {
+          headingEl.className = 'font-great-vibes text-3xl sm:text-4xl font-normal leading-tight my-0.5 gold-title text-amber-100 filter drop-shadow-[0_2px_12px_rgba(245,158,11,0.6)]';
+        }
+      }
+
+      if (msgEl) {
+        msgEl.textContent = c.message || c.customMessage || 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!';
+        if (lang === 'ta') {
+          msgEl.className = 'font-tamil text-[12px] sm:text-[13px] leading-relaxed text-amber-50/95 font-medium max-w-[94%] mx-auto';
+        } else if (lang === 'hi') {
+          msgEl.className = 'font-hindi text-[12px] sm:text-[13px] leading-relaxed text-amber-50/95 font-medium max-w-[94%] mx-auto';
+        } else {
+          msgEl.className = 'font-outfit text-[13px] sm:text-[14px] leading-relaxed text-amber-50/95 font-medium max-w-[94%] mx-auto';
+        }
+      }
+
+      const symKey = c.symbol;
+      const cardSymbolEl = document.getElementById('card-symbol');
+      if (cardSymbolEl) {
+        if (symKey && symKey !== 'none' && SYMBOL_SVGS[symKey]) {
+          cardSymbolEl.innerHTML = SYMBOL_SVGS[symKey];
+          cardSymbolEl.classList.remove('hidden');
+        } else {
+          cardSymbolEl.classList.add('hidden');
+          cardSymbolEl.innerHTML = '';
+        }
+      }
+
+      const senderSign = document.getElementById('card-sender-sign');
+      if (senderSign) {
+        const hostDisplay = c.senderName ? c.senderName.trim() : (lang === 'ta' ? 'எங்கள் குடும்பத்தினர்' : lang === 'hi' ? 'हमारे परिवार' : 'Our Family');
+        if (lang === 'ta') {
+          senderSign.className = 'text-xs sm:text-[13px] font-bold font-tamil text-amber-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mt-0.5 tracking-normal';
+          senderSign.textContent = `${hostDisplay} குடும்பத்தினரின் மனமார்ந்த வாழ்த்துகள்`;
+        } else if (lang === 'hi') {
+          senderSign.className = 'text-xs sm:text-[13px] font-bold font-hindi text-amber-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mt-0.5 tracking-normal';
+          senderSign.textContent = `${hostDisplay} परिवार की ओर से सपरिवार मंगलकामनाएं`;
+        } else {
+          senderSign.className = 'text-xs sm:text-[13px] font-bold font-marcellus text-amber-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mt-0.5 tracking-wider';
+          senderSign.textContent = `Warmest Wishes & Joy From ${hostDisplay}`;
+        }
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Immediate Boot (0ms) - Runs as soon as script tag loads, ZERO wait for fonts/network!
+    const _p = new URLSearchParams(window.location.search);
+    const _cId = _p.get('id');
+    const _uTpl = _p.get('tpl');
+    let _cached = null;
+    try {
+      if (_cId) _cached = JSON.parse(localStorage.getItem('dw_card_' + _cId) || 'null');
+    } catch (e) {}
+    let _initTpl = (_uTpl && VALID_TEMPLATES.includes(_uTpl)) ? _uTpl : null;
+    if (!_initTpl && _cached) _initTpl = _cached.templateId || _cached.template;
+
+    // Apply exact template & artwork immediately on frame-0!
+    applyCardToDOM(_cached || {}, _initTpl);
+    startContinuousFestiveBursts();
+    initBackgroundFireworks();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.scrollTo(0, 0);
+      if (window.lucide) lucide.createIcons();
+
+      // Non-blocking asynchronous sync from server (smooth background update):
+      if (_cId) {
+        fetch('/api/cards/' + _cId)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.success && data.card) {
+              const freshCard = { ...(_cached || {}), ...data.card };
+              let finalTpl = _initTpl || freshCard.templateId || freshCard.template;
+              applyCardToDOM(freshCard, finalTpl);
+            }
+          })
+          .catch(err => console.warn('Background sync note:', err));
+      }
+    });
+  </script>
+</body>
+</html>

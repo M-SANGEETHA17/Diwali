@@ -1,0 +1,24 @@
+{
+  "name": "diwali-wish",
+  "version": "1.0.0",
+  "description": "Diwali Wish website with vibrant purple theme and WhatsApp contact wish sender",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "diwali",
+    "wishes",
+    "whatsapp",
+    "baileys"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^9.12.0"
+  }
+}

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "REG-1793973791142",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T14:03:11.143Z"
+  },
+  {
+    "id": "REG-1793973683687",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T14:01:23.688Z"
+  },
+  {
+    "id": "REG-1793973341443",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:55:41.443Z"
+  },
+  {
+    "id": "REG-1793972994353",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:49:54.354Z"
+  },
+  {
+    "id": "REG-1793972632598",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:43:52.600Z"
+  },
+  {
+    "id": "REG-1793972172681",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:36:12.681Z"
+  },
+  {
+    "id": "REG-1793971939988",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:32:19.988Z"
+  },
+  {
+    "id": "REG-1793971544544",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:25:44.545Z"
+  },
+  {
+    "id": "REG-1793971099572",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T13:18:19.573Z"
+  },
+  {
+    "id": "REG-1793969384199",
+    "name": "demo",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T12:49:44.199Z"
+  },
+  {
+    "id": "REG-1793969050506",
+    "name": "gansh",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T12:44:10.507Z"
+  },
+  {
+    "id": "REG-1793968237277",
+    "name": "gansh",
+    "phone": "9858965898",
+    "email": "",
+    "city": "",
+    "wishMessage": "",
+    "createdAt": "2026-11-06T12:30:37.282Z"
+  },
+  {
+    "id": "REG-1793854902087",
+    "name": "Sangeetha M",
+    "phone": "8825961577",
+    "email": "ssangeetha30304@gmail.com",
+    "wishMessage": "Wishing you and your family a gleaming and joyful Diwali! May divine light bless you with prosperity and happiness.",
+    "diyaType": "golden",
+    "createdAt": "2026-11-05T05:01:42.094Z"
+  }
+]

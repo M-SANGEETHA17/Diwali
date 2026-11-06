@@ -1,0 +1,758 @@
+/* Sparkle Wish Custom Stylesheet - Luxury Snehpatrika Replica */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Marcellus&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Rozha+One&display=swap');
+
+/* Typography */
+.font-great-vibes { font-family: 'Great Vibes', cursive; }
+.font-marcellus { font-family: 'Marcellus', serif; }
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-outfit { font-family: 'Outfit', sans-serif; }
+.font-tamil { font-family: 'Noto Sans Tamil', sans-serif; }
+.font-hindi { font-family: 'Noto Sans Devanagari', sans-serif; }
+
+/* Page Background & Viewport Overflow Shield */
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 12%, #7a1557 0%, #430c3e 35%, #20052a 75%, #0f0214 100%) fixed !important;
+  color: #fff9ea;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Authentic Invitation Card Ratios & Curved Border Radii (100% Fully Responsive) */
+.card-status-ratio {
+  width: min(90vw, 320px);
+  min-height: 520px;
+  max-width: 100%;
+  border-radius: 22px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-post-ratio {
+  width: min(90vw, 340px);
+  min-height: 400px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .card-status-ratio {
+    width: 330px;
+    min-height: 580px;
+  }
+  .card-post-ratio {
+    width: 380px;
+    min-height: 440px;
+  }
+}
+
+/* ========================================================
+   LUXURY GOLD SHIMMER & INNER ORNATE BORDERS
+   ======================================================== */
+.gold-title {
+  color: #fed776;
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #fed776 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 14px rgba(254, 215, 102, 0.6);
+}
+
+.gold-title-warm {
+  color: #8b2c0f;
+  text-shadow: 0 1px 4px rgba(139, 44, 15, 0.2);
+}
+
+/* Hover animations for gallery cards */
+.luxury-gallery-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+.luxury-gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 42px -6px rgba(0, 0, 0, 0.38), 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.luxury-gallery-card img {
+  max-height: 85px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .luxury-gallery-card {
+    padding: 10px 8px !important;
+    border-radius: 14px !important;
+  }
+  .luxury-gallery-card img {
+    max-height: 65px;
+  }
+  .card-inner-frame {
+    inset: 5px !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Inner Gold Filigree Border */
+.card-inner-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid rgba(253, 224, 71, 0.45);
+  border-radius: 18px;
+  box-shadow: inset 0 0 14px rgba(253, 224, 71, 0.15), 0 0 10px rgba(245, 158, 11, 0.15);
+  pointer-events: none;
+  z-index: 5;
+}
+.card-inner-frame::before {
+  content: '✦';
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-size: 11px;
+  color: #fde047;
+  filter: drop-shadow(0 0 5px #f59e0b);
+}
+.card-inner-frame::after {
+  content: '✦';
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: #fde047;
+  filter: drop-shadow(0 0 5px #f59e0b);
+}
+
+/* ========================================================
+   THE 10 VIBRANT FESTIVE LUXURY TEMPLATES
+   ======================================================== */
+
+/* 1. Gold Foil Lotus Diya (Royal Celestial Navy) */
+.tpl-navy-lotus {
+  background: radial-gradient(circle at 50% 18%, #1e3a6d 0%, #0e1e3b 50%, #050b17 100%);
+  color: #faebd2;
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 0 30px rgba(30, 58, 109, 0.6), inset 0 0 25px rgba(245, 158, 11, 0.12);
+}
+
+/* 2. Painted Clay Diya (Warm Festive Earthen Terracotta) */
+.tpl-clay-diya {
+  background: radial-gradient(circle at 50% 18%, #4a190b 0%, #2b0b04 55%, #150301 100%);
+  color: #fef3c7;
+  border: 1.5px solid rgba(249, 115, 22, 0.55);
+  box-shadow: 0 0 30px rgba(234, 88, 12, 0.35), inset 0 0 25px rgba(249, 115, 22, 0.15);
+}
+.tpl-clay-diya .card-inner-frame {
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+/* 3. Gold Foil Kalash (Imperial Royal Velvet Crimson) */
+.tpl-crimson-kalash {
+  background: radial-gradient(circle at 50% 18%, #991219 0%, #5e060a 50%, #290103 100%);
+  color: #fcedcf;
+  border: 1.5px solid rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 32px rgba(185, 28, 28, 0.45), inset 0 0 25px rgba(251, 191, 36, 0.15);
+}
+
+/* 4. Gold Foil Ganesh (Royal Temple Emerald Green) */
+.tpl-emerald-ganesh {
+  background: radial-gradient(circle at 50% 18%, #0f4f31 0%, #072e1d 50%, #02140c 100%);
+  color: #ebf7ef;
+  border: 1.5px solid rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.35), inset 0 0 25px rgba(251, 191, 36, 0.15);
+}
+
+/* 5. Festive Akash Kandil (Sunset Amber Glow) */
+.tpl-akash-kandil {
+  background: radial-gradient(circle at 50% 18%, #4a2800 0%, #2a1400 55%, #120800 100%);
+  color: #fef3c7;
+  border: 1.5px solid rgba(245, 158, 11, 0.55);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.35), inset 0 0 25px rgba(251, 191, 36, 0.15);
+}
+
+/* 6. Midnight Gold Foil Diyas (Starlight Obsidian Black) */
+.tpl-midnight-gold {
+  background: radial-gradient(circle at 50% 18%, #282433 0%, #15131c 55%, #08070b 100%);
+  color: #faebd2;
+  border: 1.5px solid rgba(251, 191, 36, 0.65);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.4), inset 0 0 25px rgba(251, 191, 36, 0.15);
+}
+
+/* 7. Divine Tree of Life (Pichwai Palace Indigo) */
+.tpl-tree-of-life {
+  background: radial-gradient(circle at 50% 18%, #1c2e54 0%, #0f1c36 55%, #050914 100%);
+  color: #f5ecd6;
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.35), inset 0 0 25px rgba(251, 191, 36, 0.12);
+}
+
+/* 8. Marigold & Lotus Garland (Jewel Emerald Festive) */
+.tpl-marigold-toran {
+  background: radial-gradient(circle at 50% 18%, #134733 0%, #0a2d20 55%, #03140d 100%);
+  color: #fcf4de;
+  border: 1.5px solid rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.35), inset 0 0 25px rgba(245, 158, 11, 0.15);
+}
+
+/* 9. Royal Purple Glow (Imperial Amethyst) */
+.tpl-royal-purple {
+  background: radial-gradient(circle at 50% 18%, #4f0a6b 0%, #2e0340 55%, #12001a 100%);
+  color: #fcedd0;
+  border: 1.5px solid rgba(250, 204, 21, 0.6);
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.45), inset 0 0 25px rgba(250, 204, 21, 0.15);
+}
+
+/* 10. Golden Rangoli & Lakshmi Charan (Sunset Saffron Copper) */
+.tpl-golden-rangoli {
+  background: radial-gradient(circle at 50% 18%, #781d0a 0%, #4a0f04 55%, #1e0501 100%);
+  color: #fff3d6;
+  border: 1.5px solid rgba(245, 158, 11, 0.65);
+  box-shadow: 0 0 35px rgba(234, 88, 12, 0.4), inset 0 0 25px rgba(245, 158, 11, 0.18);
+}
+
+/* Language Tab Buttons */
+.lang-tab-btn.active {
+  background-color: #7b181c;
+  color: #ffffff;
+  border-color: #7b181c;
+  box-shadow: 0 2px 6px rgba(123, 24, 28, 0.25);
+}
+.lang-tab-btn:not(.active) {
+  background-color: #ffffff;
+  color: #631818;
+  border-color: #d8c3ad;
+}
+
+/* Preset Message Radio Card */
+.message-radio-item {
+  border: 1.5px solid #ebdccb;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.message-radio-item:hover {
+  border-color: #c9a482;
+  background-color: #fdfcf9;
+}
+.message-radio-item.selected {
+  border-color: #7b181c;
+  background-color: #fdf5f5;
+  box-shadow: 0 0 0 1px #7b181c;
+}
+
+/* Font Style Selector */
+.font-style-btn.active {
+  border-color: #7b181c;
+  background-color: #fdf5f5;
+  box-shadow: 0 0 0 1px #7b181c;
+}
+
+/* Symbol Selector */
+.symbol-btn.active {
+  border-color: #d97706;
+  background-color: #fffbeb;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.45), inset 0 0 0 1px #d97706;
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d8c3ad;
+  border-radius: 6px;
+}
+
+/* Quick Title Preset Chips */
+.preset-title-chip {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.preset-title-chip:hover {
+  background-color: #fef3c7;
+  border-color: #d97706;
+  transform: translateY(-1px);
+}
+.preset-title-chip:active {
+  transform: translateY(0);
+}
+
+/* ==================== DIWALI ANIMATIONS & FLYING CARDS ==================== */
+
+/* Intro Rocket & Burst */
+@keyframes rocketShoot {
+  0% { transform: translateY(220px) scale(0.6); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-40px) scale(1.1); opacity: 1; }
+}
+.animate-rocket-shoot {
+  animation: rocketShoot 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes scaleBurst {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-scale-burst {
+  animation: scaleBurst 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Flying Entrance for Gallery Cards */
+@keyframes flyFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-160px) translateY(50px) rotate(-14deg) scale(0.7);
+    filter: blur(5px);
+  }
+  65% {
+    transform: translateX(12px) translateY(-8px) rotate(2deg) scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes flyFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(160px) translateY(50px) rotate(14deg) scale(0.7);
+    filter: blur(5px);
+  }
+  65% {
+    transform: translateX(-12px) translateY(-8px) rotate(-2deg) scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes flyFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(180px) scale(0.75);
+    filter: blur(5px);
+  }
+  65% {
+    transform: translateY(-14px) scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flyFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-180px) rotate(8deg) scale(0.75);
+    filter: blur(5px);
+  }
+  65% {
+    transform: translateY(12px) rotate(-1deg) scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.fly-in-left {
+  animation: flyFromLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.fly-in-right {
+  animation: flyFromRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.fly-in-bottom {
+  animation: flyFromBottom 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.fly-in-top {
+  animation: flyFromTop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Gentle Floating Animation on Cards */
+@keyframes festiveCardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.card-floating {
+  animation: festiveCardFloat 4.5s ease-in-out infinite;
+}
+.template-card:nth-child(2n).card-floating {
+  animation-delay: 0.8s;
+  animation-duration: 5.2s;
+}
+.template-card:nth-child(3n).card-floating {
+  animation-delay: 1.5s;
+  animation-duration: 4.8s;
+}
+
+/* Diya Flame Realistic Flicker Animation */
+@keyframes flameDance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8));
+  }
+  25% {
+    transform: scale(1.06, 0.94) rotate(-2deg);
+    filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.9));
+  }
+  50% {
+    transform: scale(0.95, 1.07) rotate(2deg);
+    filter: drop-shadow(0 0 13px rgba(245, 158, 11, 0.95));
+  }
+  75% {
+    transform: scale(1.05, 0.97) rotate(-1deg);
+    filter: drop-shadow(0 0 16px rgba(253, 224, 71, 0.9));
+  }
+}
+
+svg path[fill*="url(#gFlame)"] {
+  transform-origin: center bottom;
+  animation: flameDance 1.8s ease-in-out infinite alternate !important;
+}
+
+/* Shimmer Gold Sheen Across Cards */
+@keyframes goldSheenSweep {
+  0% {
+    left: -120%;
+  }
+  35%, 100% {
+    left: 140%;
+  }
+}
+.luxury-gallery-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 235, 150, 0.22), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: goldSheenSweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 15;
+}
+.template-card:nth-child(even) .luxury-gallery-card::after {
+  animation-delay: 2.2s;
+}
+
+/* ==================== BUSUVANAM (FLOWERPOT) & THARA CHAKARAM (SPINNER) ANIMATIONS ==================== */
+@keyframes flowerpotRumble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-0.8px) rotate(-0.6deg); }
+  50% { transform: translateY(0.6px) rotate(0.4deg); }
+  75% { transform: translateY(-0.5px) rotate(-0.3deg); }
+}
+
+@keyframes flowerpotGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 14px rgba(250, 204, 21, 0.75)) drop-shadow(0 0 28px rgba(249, 115, 22, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 26px rgba(253, 224, 71, 0.95)) drop-shadow(0 0 42px rgba(239, 68, 68, 0.75));
+  }
+}
+
+@keyframes flamePlume {
+  0%, 100% {
+    transform: scaleY(1) scaleX(0.9);
+    filter: drop-shadow(0 0 8px #fef08a);
+  }
+  50% {
+    transform: scaleY(1.4) scaleX(1.15);
+    filter: drop-shadow(0 0 16px #f59e0b) drop-shadow(0 0 24px #ea580c);
+  }
+}
+
+/* Busuvanam Fountain Sparks */
+@keyframes fountainSparks {
+  0% {
+    transform: translate(0, 0) scale(0.35);
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--spray-x, 0px), calc(-55px - var(--extra-y, 0px))) scale(var(--spark-scale, 1.3));
+    opacity: 0;
+  }
+}
+
+.busuvanam-cone-active {
+  animation: flowerpotRumble 0.18s ease-in-out infinite, flowerpotGlow 1.2s ease-in-out infinite alternate !important;
+  transform-origin: bottom center;
+}
+
+.flame-core {
+  animation: flamePlume 0.22s ease-in-out infinite alternate !important;
+  transform-origin: bottom center;
+}
+
+.fountain-spark-dot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-radius: 50%;
+  animation: fountainSparks var(--spark-dur, 0.75s) cubic-bezier(0.2, 0.75, 0.4, 1) infinite !important;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.spark-p1 { --spray-x: -24px; --extra-y: 28px; --spark-dur: 0.65s; --spark-scale: 1.4; animation-delay: 0.05s; background: #fef08a; width: 4.5px; height: 4.5px; box-shadow: 0 0 8px #fef08a; }
+.spark-p2 { --spray-x: 22px; --extra-y: 35px; --spark-dur: 0.72s; --spark-scale: 1.5; animation-delay: 0.2s; background: #fb923c; width: 4px; height: 4px; box-shadow: 0 0 6px #f97316; }
+.spark-p3 { --spray-x: -8px; --extra-y: 50px; --spark-dur: 0.58s; --spark-scale: 1.6; animation-delay: 0.12s; background: #ffffff; width: 5px; height: 5px; box-shadow: 0 0 10px #ffffff; }
+.spark-p4 { --spray-x: 12px; --extra-y: 42px; --spark-dur: 0.68s; --spark-scale: 1.3; animation-delay: 0.32s; background: #f43f5e; width: 4px; height: 4px; box-shadow: 0 0 8px #f43f5e; }
+.spark-p5 { --spray-x: -32px; --extra-y: 18px; --spark-dur: 0.8s; --spark-scale: 1.2; animation-delay: 0.45s; background: #c084fc; width: 3.5px; height: 3.5px; }
+.spark-p6 { --spray-x: 30px; --extra-y: 20px; --spark-dur: 0.75s; --spark-scale: 1.2; animation-delay: 0.28s; background: #34d399; width: 3.5px; height: 3.5px; }
+.spark-p7 { --spray-x: 0px; --extra-y: 58px; --spark-dur: 0.55s; --spark-scale: 1.7; animation-delay: 0.38s; background: #fde047; width: 4.5px; height: 4.5px; box-shadow: 0 0 9px #facc15; }
+.spark-p8 { --spray-x: -16px; --extra-y: 38px; --spark-dur: 0.62s; --spark-scale: 1.3; animation-delay: 0.18s; background: #ffffff; width: 4px; height: 4px; box-shadow: 0 0 8px #fff; }
+
+/* Second cone mini sparks */
+.spark-m1 { --spray-x: -14px; --extra-y: 22px; --spark-dur: 0.6s; --spark-scale: 1.2; animation-delay: 0.08s; background: #fde047; width: 3.5px; height: 3.5px; }
+.spark-m2 { --spray-x: 15px; --extra-y: 26px; --spark-dur: 0.68s; --spark-scale: 1.3; animation-delay: 0.25s; background: #fb923c; width: 3.5px; height: 3.5px; box-shadow: 0 0 6px #f97316; }
+.spark-m3 { --spray-x: -4px; --extra-y: 36px; --spark-dur: 0.52s; --spark-scale: 1.4; animation-delay: 0.15s; background: #ffffff; width: 4px; height: 4px; box-shadow: 0 0 8px #fff; }
+.spark-m4 { --spray-x: 8px; --extra-y: 18px; --spark-dur: 0.72s; --spark-scale: 1.1; animation-delay: 0.35s; background: #f43f5e; width: 3px; height: 3px; }
+
+/* ==================== THARA CHAKARAM (GROUND SPINNER) ==================== */
+@keyframes chakraSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes chakraReverseSpin {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes chakraPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px #f59e0b) drop-shadow(0 0 28px #ef4444);
+  }
+  50% {
+    filter: drop-shadow(0 0 32px #fbbf24) drop-shadow(0 0 50px #f97316);
+  }
+}
+@keyframes sparkOrbit {
+  0% { transform: rotate(0deg) scale(0.95); opacity: 0.85; }
+  50% { transform: rotate(180deg) scale(1.15); opacity: 1; }
+  100% { transform: rotate(360deg) scale(0.95); opacity: 0.85; }
+}
+
+.chakra-wheel {
+  transform-origin: center center !important;
+  animation: chakraSpin 0.26s linear infinite !important;
+  will-change: transform;
+}
+.chakra-outer-ring {
+  transform-origin: center center !important;
+  animation: chakraReverseSpin 0.55s linear infinite !important;
+  will-change: transform;
+}
+.chakra-glow-container {
+  animation: chakraPulse 1s ease-in-out infinite alternate !important;
+}
+.chakra-spark-orbit {
+  transform-origin: center center !important;
+  animation: sparkOrbit 0.8s linear infinite !important;
+  will-change: transform;
+}
+
+/* ==================== SPARKLEWISH BRAND LOGO ANIMATION ==================== */
+@keyframes sparkleShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.sparkle-wish-title {
+  background: linear-gradient(90deg, #ffe082 0%, #fff9c4 25%, #ffb300 50%, #fff9c4 75%, #ffe082 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sparkleShimmer 4s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.7));
+  will-change: background-position;
+}
+
+/* ==================== VIEW PAGE FESTIVE CUTE ANIMATIONS ==================== */
+@keyframes goldButtonPulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.75), 0 0 45px rgba(234, 88, 12, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 38px rgba(251, 191, 36, 0.95), 0 0 60px rgba(245, 158, 11, 0.55);
+    transform: scale(1.02);
+  }
+}
+
+.royal-create-btn {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde047 25%, #f59e0b 60%, #ea580c 100%);
+  animation: goldButtonPulse 2.6s ease-in-out infinite;
+  transition: all 0.25s ease;
+}
+.royal-create-btn:hover {
+  animation: none;
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 0 45px rgba(251, 191, 36, 1), 0 10px 30px rgba(245, 158, 11, 0.7);
+}
+
+@keyframes gentleCardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 16px 40px rgba(245, 158, 11, 0.35), 0 0 50px rgba(168, 85, 247, 0.25);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 55px rgba(245, 158, 11, 0.55), 0 0 65px rgba(234, 88, 12, 0.35);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentleCardFloat 3.8s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes festiveSway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes festiveSwayDelayed {
+  0%, 100% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+
+.animate-sway {
+  transform-origin: top center;
+  animation: festiveSway 3s ease-in-out infinite;
+}
+
+.animate-sway-delayed {
+  transform-origin: top center;
+  animation: festiveSwayDelayed 3.4s ease-in-out infinite;
+}
+
+/* ==================== RESPONSIVE REFINEMENTS FOR MOBILE VIEWPORTS ==================== */
+@media (max-width: 640px) {
+  #clickable-chakaram {
+    bottom: 6px !important;
+    left: 2px !important;
+    transform: scale(0.72) !important;
+    transform-origin: bottom left !important;
+  }
+  #clickable-busuvanam {
+    bottom: 6px !important;
+    right: 2px !important;
+    transform: scale(0.72) !important;
+    transform-origin: bottom right !important;
+  }
+  #card-render-wrapper {
+    padding: 0 4px;
+  }
+  #card-artwork-container img {
+    max-height: 125px !important;
+  }
+}
+
+/* Extra small screens (< 380px) */
+@media (max-width: 380px) {
+  .sparkle-wish-title {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.02em !important;
+  }
+  #clickable-chakaram, #clickable-busuvanam {
+    transform: scale(0.62) !important;
+  }
+}
+
+/* ==================== STEP 4 TOP WHATSAPP SHARE ACTIONS ==================== */
+body.is-step-4 #card-step-share-btn {
+  display: flex !important;
+}
+body.is-step-4 #card-step-saved-pill {
+  display: none !important;
+}
+
+/* ==================== SWAPPED LAYOUT: EDIT FORM ON TOP, TEMPLATE PREVIEW ON BOTTOM ON MOBILE ==================== */
+@media (max-width: 1023px) {
+  #editor-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* Steps 1, 2, 3: Edit Form on TOP, Template Preview on BOTTOM */
+  #editor-grid > .editor-form-col {
+    order: 1 !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+  #editor-grid > .editor-preview-col {
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  /* Step 4: ONLY Step 4 restores original layout (Template Preview on TOP, Share Card on BOTTOM) */
+  body.is-step-4 #editor-grid > .editor-preview-col {
+    order: 1 !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+  body.is-step-4 #editor-grid > .editor-form-col {
+    order: 2 !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+}
+@media (min-width: 1024px) {
+  #editor-grid {
+    display: grid !important;
+  }
+  #editor-grid > .editor-preview-col {
+    order: 1 !important;
+  }
+  #editor-grid > .editor-form-col {
+    order: 2 !important;
+  }
+}
