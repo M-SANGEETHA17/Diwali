@@ -1055,13 +1055,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check if message is a preset wish
       const currLang = state.language || 'en';
       const presetWishes = WISHES[currLang] || WISHES.en;
-      const wishIdx = presetWishes.indexOf(msg ? msg.trim() : '');
+      const cleanMsg = msg ? msg.trim() : '';
+      const wishIdx = presetWishes.findIndex(w => w && w.trim() === cleanMsg);
 
       if (wishIdx !== -1) {
         // Preset wish: Just store index! (Only 3 characters instead of 1,000 Unicode characters!)
         shareParams.set('w', wishIdx);
-      } else if (msg && msg.trim()) {
-        shareParams.set('msg', msg.trim());
+      } else if (cleanMsg) {
+        shareParams.set('msg', cleanMsg);
       }
 
       if (currLang !== 'en') shareParams.set('lang', currLang);
@@ -1080,10 +1081,15 @@ document.addEventListener('DOMContentLoaded', () => {
         shareParams.set('sub', state.subtitle.trim());
       }
 
-      // Default heading check - only include if customized:
-      const defaultHeadings = ['Happy Diwali', 'இனிய தீபாவளி நல்வாழ்த்துகள்', 'शुभ दीपावली'];
-      if (heading && !defaultHeadings.includes(heading.trim())) {
-        shareParams.set('h', heading.trim());
+      // Check if heading is in TITLE_PRESETS:
+      const presetTitles = TITLE_PRESETS[currLang] || TITLE_PRESETS.en;
+      const cleanHeading = heading ? heading.trim() : '';
+      const titleIdx = presetTitles.findIndex(t => t && t.trim() === cleanHeading);
+
+      if (titleIdx !== -1) {
+        if (titleIdx > 0) shareParams.set('t', titleIdx);
+      } else if (cleanHeading && cleanHeading !== 'Happy Diwali') {
+        shareParams.set('h', cleanHeading);
       }
 
       let shareUrl = `/view.html?${shareParams.toString()}`;
