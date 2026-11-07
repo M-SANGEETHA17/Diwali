@@ -1046,12 +1046,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let cardId = 'dw_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).substring(4);
       
-      // Smart Short URL Builder: Keeps link tiny and prevents massive %E0%AE% expansion!
-      const shareParams = new URLSearchParams();
-      shareParams.set('id', cardId);
-      if (tpl) shareParams.set('tpl', tpl);
-      if (sender && sender.trim() !== 'Our family') shareParams.set('name', sender.trim());
-
       // Smart Ultra-Short URL Builder: NEVER dumps raw Unicode strings into URL!
       const shareParams = new URLSearchParams();
       shareParams.set('id', cardId);
