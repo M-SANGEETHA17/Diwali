@@ -1046,24 +1046,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let cardId = 'dw_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).substring(4);
       
-      // Build self-contained parameters so card ALWAYS works on ANY server/device without data loss!
+      // Smart Short URL Builder: Keeps link tiny and prevents massive %E0%AE% expansion!
       const shareParams = new URLSearchParams();
       shareParams.set('id', cardId);
-      shareParams.set('tpl', tpl);
-      if (sender) shareParams.set('name', sender.trim());
-      if (heading) shareParams.set('h', heading.trim());
-      if (msg) shareParams.set('msg', msg.trim());
-      if (state.subtitle && state.subtitle.trim()) shareParams.set('sub', state.subtitle.trim());
-      if (state.language && state.language !== 'en') shareParams.set('lang', state.language);
-      if (state.fontStyle && state.fontStyle !== 'elegant') shareParams.set('font', state.fontStyle);
-      if (state.symbol && state.symbol !== 'none') shareParams.set('sym', state.symbol);
-      if (state.familyPhoto && !state.familyPhoto.startsWith('data:')) {
-        shareParams.set('p', state.familyPhoto);
+      if (tpl) shareParams.set('tpl', tpl);
+      if (sender && sender.trim() !== 'Our family') shareParams.set('name', sender.trim());
+
+      // Check if message is a preset wish
+      const currLang = state.language || 'en';
+      const presetWishes = WISHES[currLang] || WISHES.en;
+      const wishIdx = presetWishes.indexOf(msg ? msg.trim() : '');
+
+      if (wishIdx !== -1) {
+        // Preset wish: Just store index! (Only 3 characters instead of 1,000 Unicode characters!)
+        shareParams.set('w', wishIdx);
+      } else if (msg && msg.trim()) {
+        shareParams.set('msg', msg.trim());
       }
+
+      if (currLang !== 'en') shareParams.set('lang', currLang);
+
+      // Default subtitle check - only include if customized:
+      const defaultSub = 'Wishing you and your family abundant peace, prosperity and happiness!';
+      if (state.subtitle && state.subtitle.trim() && state.subtitle.trim() !== defaultSub) {
+        shareParams.set('sub', state.subtitle.trim());
+      }
+
+      // Default heading check - only include if customized:
+      const defaultHeadings = ['Happy Diwali', 'இனிய தீபாவளி நல்வாழ்த்துகள்', 'शुभ दीपावली'];
+      if (heading && !defaultHeadings.includes(heading.trim())) {
+        shareParams.set('h', heading.trim());
+      }
+
       let shareUrl = `/view.html?${shareParams.toString()}`;
 
       try {
-        const res = await fetch('/api/cards', {
+        const postEndpoint = (window.location.hostname === 'wishes.lifechangersind.com') 
+          ? 'https://diwali-al26.onrender.com/api/cards' 
+          : '/api/cards';
+        const res = await fetch(postEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

@@ -843,6 +843,27 @@
       'royal-purple', 'golden-rangoli'
     ];
 
+    const WISHES = {
+      en: [
+        'Wishing you and your family a joyous Diwali filled with love, laughter and prosperous beginnings!',
+        'May the divine lights of Diwali dispel all darkness and illuminate your life with health and happiness.',
+        'May Goddess Lakshmi bless you with endless abundance, peace and success this festive season.',
+        'Wishing you a sparkling Diwali and a joyous New Year filled with sweet memories!'
+      ],
+      ta: [
+        'இனிய தீபாவளி நல்வாழ்த்துகள்! எங்கள் இல்லத் தீபாவளி கொண்டாட்டத்திற்கு அன்போடு அழைக்கிறோம்.',
+        'இந்த தீபாவளி திருநாளில் உங்கள் வாழ்வில் அனைத்து நலன்களும், செல்வமும், அமைதியும் நிறைய மனமார்ந்த வாழ்த்துகள்!',
+        'லட்சுமி தேவியின் பரிபூரண அருளால் உங்கள் குடும்பத்தில் நல்வாழ்வும், மகிழ்ச்சியும் பெருகிட இனிய தீபாவளி வாழ்த்துக்கள்!',
+        'தித்திக்கும் இனிப்புகளோடும், வண்ணமிகு பட்டாசு வெளிச்சத்தோடும் உங்கள் குடும்பத்தினருடன் மகிழ்ச்சியாக கொண்டாடுங்கள்!'
+      ],
+      hi: [
+        'दीपावली मिलन समारोह में आपका सपरिवार हार्दिक स्वागत है। रोशनी और मिठास के इस पर्व पर अवश्य पधारें।',
+        'दीपावली के इस पावन पर्व पर आपके जीवन में सुख, शांति और समृद्धि का वास हो। आपको और आपके परिवार को शुभ दीपावली!',
+        'माँ लक्ष्मी का आशीर्वाद आप पर सदा बना रहे। धन, धान्य और खुशियों से आपका घर आँगन भर जाए।',
+        'रोशनी के इस पावन उत्सव पर आपके जीवन में नई उमंग और खुशहाली आए। शुभ दीपावली!'
+      ]
+    };
+
     function applyCardToDOM(c, forcedTpl) {
       if (!c) c = {};
       let tplId = forcedTpl;
@@ -962,16 +983,26 @@
     } catch (e) {}
 
     // Check if card parameters are in URL (100% Zero-Loss Delivery on ANY device or Render live link!)
-    if (_p.get('name') || _p.get('msg') || _p.get('sub') || _p.get('h')) {
+    if (_p.get('name') || _p.get('msg') || _p.get('w') || _p.get('sub') || _p.get('h')) {
+      const pLang = _p.get('lang') || (_cached ? _cached.language : 'en');
+      let pMsg = _p.get('msg') || (_cached ? _cached.message : '');
+      if (_p.get('w') !== null && _p.get('w') !== undefined && _p.get('w') !== '') {
+        const wIdx = parseInt(_p.get('w'), 10);
+        const wList = WISHES[pLang] || WISHES.en;
+        if (!isNaN(wIdx) && wList[wIdx]) {
+          pMsg = wList[wIdx];
+        }
+      }
+
       _cached = {
         ...(_cached || {}),
         templateId: _uTpl || (_cached ? _cached.templateId : 'navy-lotus'),
         template: _uTpl || (_cached ? _cached.template : 'navy-lotus'),
         senderName: _p.get('name') || (_cached ? _cached.senderName : ''),
         heading: _p.get('h') || (_cached ? _cached.heading : ''),
-        message: _p.get('msg') || (_cached ? _cached.message : ''),
+        message: pMsg,
         subtitle: _p.get('sub') || (_cached ? _cached.subtitle : ''),
-        language: _p.get('lang') || (_cached ? _cached.language : 'en'),
+        language: pLang,
         fontStyle: _p.get('font') || (_cached ? _cached.fontStyle : 'elegant'),
         symbol: _p.get('sym') || (_cached ? _cached.symbol : 'none'),
         familyPhoto: _p.get('p') || (_cached ? _cached.familyPhoto : 'assets/avatar-boy.png')
@@ -992,7 +1023,10 @@
 
       // Non-blocking asynchronous sync from server (smooth background update):
       if (_cId) {
-        fetch('/api/cards/' + _cId)
+        const fetchUrl = (window.location.hostname === 'wishes.lifechangersind.com') 
+          ? 'https://diwali-al26.onrender.com/api/cards/' + _cId 
+          : '/api/cards/' + _cId;
+        fetch(fetchUrl)
           .then(res => res.json())
           .then(data => {
             if (data && data.success && data.card) {
