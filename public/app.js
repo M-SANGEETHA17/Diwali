@@ -1066,9 +1066,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currLang !== 'en') shareParams.set('lang', currLang);
 
-      // Default subtitle check - only include if customized:
-      const defaultSub = 'Wishing you and your family abundant peace, prosperity and happiness!';
-      if (state.subtitle && state.subtitle.trim() && state.subtitle.trim() !== defaultSub) {
+      // Preset subtitles list across all languages - NEVER dump default subtitles into URL:
+      const presetSubtitles = [
+        SUBTITLE_PRESETS.en,
+        SUBTITLE_PRESETS.ta,
+        SUBTITLE_PRESETS.hi,
+        'Wishing you and your family abundant peace, prosperity and happiness!',
+        'உங்கள் இல்லத்தில் நலன்களும், செல்வமும், அமைதியும் நிறைய மனமார்ந்த தீபாவளி வாழ்த்துகள்!',
+        'दीपावली के इस पावन पर्व पर आपके जीवन में सुख, शांति और समृद्धि का वास हो।'
+      ];
+      const isPresetSub = !state.subtitle || presetSubtitles.some(s => s && s.trim() === state.subtitle.trim());
+      if (!isPresetSub && state.subtitle && state.subtitle.trim()) {
         shareParams.set('sub', state.subtitle.trim());
       }
 

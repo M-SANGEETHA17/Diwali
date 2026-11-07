@@ -843,6 +843,12 @@
       'royal-purple', 'golden-rangoli'
     ];
 
+    const SUBTITLE_PRESETS = {
+      en: 'Wishing you and your family abundant peace, prosperity and happiness!',
+      ta: 'உங்கள் இல்லத்தில் நலன்களும், செல்வமும், அமைதியும் நிறைய மனமார்ந்த தீபாவளி வாழ்த்துகள்!',
+      hi: 'दीपावली के इस पावन पर्व पर आपके जीवन में सुख, शांति और समृद्धि का वास हो।'
+    };
+
     const WISHES = {
       en: [
         'Wishing you and your family a joyous Diwali filled with love, laughter and prosperous beginnings!',
@@ -1001,7 +1007,7 @@
         senderName: _p.get('name') || (_cached ? _cached.senderName : ''),
         heading: _p.get('h') || (_cached ? _cached.heading : ''),
         message: pMsg,
-        subtitle: _p.get('sub') || (_cached ? _cached.subtitle : ''),
+        subtitle: _p.get('sub') || (_cached ? _cached.subtitle : '') || (SUBTITLE_PRESETS && SUBTITLE_PRESETS[pLang] ? SUBTITLE_PRESETS[pLang] : ''),
         language: pLang,
         fontStyle: _p.get('font') || (_cached ? _cached.fontStyle : 'elegant'),
         symbol: _p.get('sym') || (_cached ? _cached.symbol : 'none'),
