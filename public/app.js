@@ -1052,65 +1052,60 @@ document.addEventListener('DOMContentLoaded', () => {
       if (tpl) shareParams.set('tpl', tpl);
       if (sender && sender.trim() !== 'Our family') shareParams.set('name', sender.trim());
 
-      // Check if message is a preset wish
+      // Smart Ultra-Short URL Builder: NEVER dumps raw Unicode strings into URL!
+      const shareParams = new URLSearchParams();
+      shareParams.set('id', cardId);
+      if (tpl) shareParams.set('tpl', tpl);
+      if (sender && sender.trim() !== 'Our family') shareParams.set('name', sender.trim());
+
+      // Check if message is a preset wish or starts with a preset wish
       const currLang = state.language || 'en';
       const presetWishes = WISHES[currLang] || WISHES.en;
       const cleanMsg = msg ? msg.trim() : '';
-      const wishIdx = presetWishes.findIndex(w => w && w.trim() === cleanMsg);
+      let wishIdx = presetWishes.findIndex(w => w && w.trim() === cleanMsg);
+      if (wishIdx === -1) {
+        wishIdx = presetWishes.findIndex(w => w && cleanMsg.startsWith(w.substring(0, 25)));
+      }
 
       if (wishIdx !== -1) {
-        // Preset wish: Just store index! (Only 3 characters instead of 1,000 Unicode characters!)
         shareParams.set('w', wishIdx);
-      } else if (cleanMsg) {
-        shareParams.set('msg', cleanMsg);
       }
 
       if (currLang !== 'en') shareParams.set('lang', currLang);
-
-      // Preset subtitles list across all languages - NEVER dump default subtitles into URL:
-      const presetSubtitles = [
-        SUBTITLE_PRESETS.en,
-        SUBTITLE_PRESETS.ta,
-        SUBTITLE_PRESETS.hi,
-        'Wishing you and your family abundant peace, prosperity and happiness!',
-        'உங்கள் இல்லத்தில் நலன்களும், செல்வமும், அமைதியும் நிறைய மனமார்ந்த தீபாவளி வாழ்த்துகள்!',
-        'दीपावली के इस पावन पर्व पर आपके जीवन में सुख, शांति और समृद्धि का वास हो।'
-      ];
-      const isPresetSub = !state.subtitle || presetSubtitles.some(s => s && s.trim() === state.subtitle.trim());
-      if (!isPresetSub && state.subtitle && state.subtitle.trim()) {
-        shareParams.set('sub', state.subtitle.trim());
-      }
 
       // Check if heading is in TITLE_PRESETS:
       const presetTitles = TITLE_PRESETS[currLang] || TITLE_PRESETS.en;
       const cleanHeading = heading ? heading.trim() : '';
       const titleIdx = presetTitles.findIndex(t => t && t.trim() === cleanHeading);
 
-      if (titleIdx !== -1) {
-        if (titleIdx > 0) shareParams.set('t', titleIdx);
-      } else if (cleanHeading && cleanHeading !== 'Happy Diwali') {
-        shareParams.set('h', cleanHeading);
+      if (titleIdx > 0) {
+        shareParams.set('t', titleIdx);
       }
 
       let shareUrl = `/view.html?${shareParams.toString()}`;
 
       try {
-        const postEndpoint = (window.location.hostname === 'wishes.lifechangersind.com') 
-          ? 'https://diwali-al26.onrender.com/api/cards' 
-          : '/api/cards';
-        const res = await fetch(postEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.card && data.card.id) {
-            cardId = data.card.id;
-            shareParams.set('id', cardId);
-            shareUrl = `/view.html?${shareParams.toString()}`;
-          }
+        const endpoints = ['https://diwali-al26.onrender.com/api/cards'];
+        if (window.location.hostname !== 'wishes.lifechangersind.com') {
+          endpoints.unshift('/api/cards');
+        }
+        for (const ep of endpoints) {
+          try {
+            const res = await fetch(ep, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.card && data.card.id) {
+                cardId = data.card.id;
+                shareParams.set('id', cardId);
+                shareUrl = `/view.html?${shareParams.toString()}`;
+                break;
+              }
+            }
+          } catch (e) {}
         }
       } catch (networkErr) {
         console.warn('Network save note:', networkErr);

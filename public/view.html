@@ -1044,32 +1044,37 @@
 
       // Non-blocking asynchronous sync from server (smooth background update):
       if (_cId) {
-        const fetchUrl = (window.location.hostname === 'wishes.lifechangersind.com') 
+        const tryFetch = (url, fallback) => {
+          fetch(url)
+            .then(res => {
+              if (!res.ok && fallback) return tryFetch(fallback, null);
+              return res.json();
+            })
+            .then(data => {
+              if (data && data.success && data.card) {
+                const freshCard = { ...(_cached || {}) };
+                for (const [key, val] of Object.entries(data.card)) {
+                  if (val !== undefined && val !== null && val !== '') {
+                    freshCard[key] = val;
+                  }
+                }
+                if (_p.get('name')) freshCard.senderName = _p.get('name');
+                if (_p.get('h')) freshCard.heading = _p.get('h');
+                if (_p.get('lang')) freshCard.language = _p.get('lang');
+                let finalTpl = _initTpl || freshCard.templateId || freshCard.template;
+                applyCardToDOM(freshCard, finalTpl);
+              }
+            })
+            .catch(err => {
+              if (fallback) tryFetch(fallback, null);
+            });
+        };
+
+        const primaryUrl = (window.location.hostname === 'wishes.lifechangersind.com') 
           ? 'https://diwali-al26.onrender.com/api/cards/' + _cId 
           : '/api/cards/' + _cId;
-        fetch(fetchUrl)
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.success && data.card) {
-              const freshCard = { ...(_cached || {}) };
-              for (const [key, val] of Object.entries(data.card)) {
-                if (val !== undefined && val !== null && val !== '') {
-                  freshCard[key] = val;
-                }
-              }
-              // URL parameters always take absolute precedence for custom recipient view:
-              if (_p.get('name')) freshCard.senderName = _p.get('name');
-              if (_p.get('h')) freshCard.heading = _p.get('h');
-              if (_p.get('msg')) freshCard.message = _p.get('msg');
-              if (_p.get('sub')) freshCard.subtitle = _p.get('sub');
-              if (_p.get('lang')) freshCard.language = _p.get('lang');
-              if (_p.get('font')) freshCard.fontStyle = _p.get('font');
-              if (_p.get('sym')) freshCard.symbol = _p.get('sym');
-              let finalTpl = _initTpl || freshCard.templateId || freshCard.template;
-              applyCardToDOM(freshCard, finalTpl);
-            }
-          })
-          .catch(err => console.warn('Background sync note:', err));
+        const backupUrl = primaryUrl.startsWith('http') ? null : ('https://diwali-al26.onrender.com/api/cards/' + _cId);
+        tryFetch(primaryUrl, backupUrl);
       }
     });
   </script>
