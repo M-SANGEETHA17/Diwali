@@ -161,7 +161,7 @@
         <!-- Sanskrit Mantra / Invocations -->
         <div id="card-mantra-container" class="text-center px-4 my-0.5">
           <div id="card-symbol" class="inline-flex items-center justify-center filter drop-shadow hidden"></div>
-          <div id="card-mantra" class="text-[9.5px] font-hindi tracking-widest text-amber-200/95 font-semibold"></div>
+          <div id="card-mantra" class="text-[9.5px] font-hindi tracking-widest text-amber-200/95 font-semibold hidden"></div>
         </div>
 
         <!-- Center Family Crest & Heading -->
@@ -864,17 +864,10 @@
         if (artImg) artImg.src = ART_MAP[tplId] || 'assets/art_navy_lotus.png';
       }
 
-      // Sacred Sanskrit Mantra / Invocations
-      const TPL_MANTRAS = {
-        'crimson-kalash': '॥ श्री लक्ष्मी प्रसन्न ॥',
-        'emerald-ganesh': '॥ शुभ दीपावली ॥',
-        'tree-of-life': '॥ श्री गणेशाय नमः ॥',
-        'marigold-toran': '॥ श्री लक्ष्मी प्रसन्न ॥',
-        'golden-rangoli': '॥ शुभ दीपावली ॥'
-      };
+      // Sanskrit Mantra removed per request
       const mantraEl = document.getElementById('card-mantra');
       if (mantraEl) {
-        mantraEl.textContent = TPL_MANTRAS[tplId] || '';
+        mantraEl.textContent = '';
       }
 
       const famImg = document.getElementById('card-family-img');

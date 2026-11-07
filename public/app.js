@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgClass: 'tpl-crimson-kalash',
       heading: 'Happy Diwali',
       tagline: 'OUR FAMILY WISHES YOU',
-      mantra: '॥ श्री लक्ष्मी प्रसन्न ॥',
+      mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
       defaultMsg: 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!',
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgClass: 'tpl-emerald-ganesh',
       heading: 'Happy Diwali',
       tagline: 'OUR FAMILY WISHES YOU',
-      mantra: '॥ शुभ दीपावली ॥',
+      mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
       defaultMsg: 'May this Diwali fill your home with light, health and happiness.',
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgClass: 'tpl-tree-of-life',
       heading: 'Happy Diwali',
       tagline: 'OUR FAMILY WISHES YOU',
-      mantra: '॥ श्री गणेशाय नमः ॥',
+      mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
       defaultMsg: 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!',
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgClass: 'tpl-marigold-toran',
       heading: 'Happy Diwali',
       tagline: 'OUR FAMILY WISHES YOU',
-      mantra: '॥ श्री लक्ष्मी प्रसन्न ॥',
+      mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
       defaultMsg: 'Wishing you and your family a joyful Diwali filled with love, laughter and prosperous beginnings!',
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgClass: 'tpl-golden-rangoli',
       heading: 'Happy Diwali',
       tagline: 'OUR FAMILY WISHES YOU',
-      mantra: '॥ शुभ दीपावली ॥',
+      mantra: '',
       dateTime: 'SUNDAY, 8 NOVEMBER • 7:30 PM',
       venue: 'B-402, SARASWATI SOCIETY, KOTHRUD, PUNE',
       defaultMsg: 'Wishing you a sparkling, joyful and prosperous Diwali filled with light, happiness and celebration!',
@@ -375,8 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ${tpl.artSvg}
           </div>
 
-          <!-- Sanskrit Mantra if present -->
-          ${tpl.mantra ? `<div class="text-[8px] font-hindi tracking-widest text-amber-200/90 font-semibold my-0.5 relative z-10">${tpl.mantra}</div>` : ''}
 
           <!-- Circular Family Portrait Crest Badge -->
           <div class="my-auto py-0.5 flex flex-col items-center relative z-10">
@@ -517,13 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mantra & Symbol
     if (cardMantra) {
-      if (tpl.mantra) {
-        cardMantra.textContent = tpl.mantra;
-        cardMantra.classList.remove('hidden');
-      } else {
-        cardMantra.textContent = '';
-        cardMantra.classList.add('hidden');
-      }
+      cardMantra.textContent = '';
+      cardMantra.classList.add('hidden');
     }
 
     if (cardSymbol) {
